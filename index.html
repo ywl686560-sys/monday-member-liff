@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>MONDAY 行動會員卡</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Noto Sans TC", Arial, sans-serif;
+      background: #f6f1ea;
+      color: #2f2a25;
+    }
+
+    .page {
+      max-width: 420px;
+      margin: 0 auto;
+      padding: 24px 16px 40px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 22px;
+      padding: 22px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      margin-bottom: 16px;
+    }
+
+    .title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .text {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #5c554d;
+    }
+
+    .status {
+      margin-top: 16px;
+      padding: 12px;
+      background: #f1ece4;
+      border-radius: 14px;
+      font-size: 13px;
+      word-break: break-all;
+      white-space: pre-wrap;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <div class="card">
+      <div class="logo">MONDAY</div>
+      <div class="title">行動會員卡</div>
+      <div class="text">
+        正在準備會員資料，請稍候。
+      </div>
+
+      <div id="status" class="status">
+        LIFF 尚未啟動
+      </div>
+    </div>
+  </div>
+
+  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+
+  <script>
+    const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwDw1br3b-YEam4pwtUfKGTiKJ8ZJfjXsiguq2wi2VElkF6GsG0I2ChDByEJ-i8KbX9/exec';
+    const LIFF_ID = '2010148452-qzfoTN8y';
+
+    const statusEl = document.getElementById('status');
+
+    function setStatus(message) {
+      statusEl.textContent = message;
+    }
+
+    async function main() {
+      try {
+        setStatus('正在初始化 LIFF...');
+
+        if (typeof liff === 'undefined') {
+          throw new Error('LIFF SDK 載入失敗');
+        }
+
+        await liff.init({
+          liffId: LIFF_ID
+        });
+
+        setStatus('LIFF 初始化完成，檢查 LINE 登入狀態...');
+
+        if (!liff.isLoggedIn()) {
+          setStatus('尚未登入 LINE，準備登入...');
+          liff.login();
+          return;
+        }
+
+        const profile = await liff.getProfile();
+        const lineUserId = profile.userId;
+
+        setStatus('已取得 LINE User ID，準備查詢會員：' + lineUserId);
+
+        const response = await fetch(WEB_APP_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'text/plain;charset=utf-8'
+          },
+          body: JSON.stringify({
+            action: 'findMemberByLineUserId',
+            lineUserId: lineUserId
+          })
+        });
+
+        const data = await response.json();
+
+        if (data.ok && data.found) {
+          setStatus('已找到會員：' + data.member.memberId);
+        } else {
+          setStatus('尚未入會，下一步會顯示首次入會表單');
+        }
+
+      } catch (error) {
+        setStatus('發生錯誤：' + error.message);
+      }
+    }
+
+    main();
+  </script>
+</body>
+</html>
