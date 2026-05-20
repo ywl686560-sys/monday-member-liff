@@ -360,6 +360,62 @@
             請確認資料正確後送出。
           </div>
         </form>
+        <section id="memberCardSection" class="member-card-section hidden">
+  <div class="member-card">
+    <div class="member-card-header">
+      <img
+        src="./assets/monday-person-logo.png"
+        alt="MONDAY Logo"
+        class="member-logo"
+      />
+
+      <div>
+        <div id="cardMemberName" class="member-name">MONDAY 會員</div>
+        <div id="cardMemberId" class="member-id">會員ID</div>
+      </div>
+    </div>
+
+    <div class="member-card-body">
+      <div id="memberQrCode" class="member-qrcode"></div>
+
+      <div class="member-info-list">
+        <div>
+          <span>會員等級</span>
+          <strong id="cardTierMileage">MONDAY Silver｜累積里程 2,500</strong>
+        </div>
+
+        <div>
+          <span>可用餘額</span>
+          <strong id="cardBalance">$0</strong>
+        </div>
+
+        <div>
+          <span>可用點數</span>
+          <strong id="cardPoints">0 點</strong>
+        </div>
+
+        <div>
+          <span>優惠券</span>
+          <strong id="cardCoupons">0 張</strong>
+        </div>
+
+        <div>
+          <span>最近到期提醒</span>
+          <strong id="cardExpireNotice">目前沒有即將到期提醒</strong>
+        </div>
+
+        <div>
+          <span>最近更新時間</span>
+          <strong id="cardUpdatedAt">-</strong>
+        </div>
+      </div>
+    </div>
+
+    <button id="memberBenefitsBtn" class="member-benefits-btn" type="button">
+      查看會員權益說明
+    </button>
+  </div>
+</section>
       </div>
     </div>
   </div>
