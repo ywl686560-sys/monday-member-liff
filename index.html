@@ -622,6 +622,17 @@ function renderMemberQrCode(memberId) {
     correctLevel: QRCode.CorrectLevel.M
   });
 }
+    
+    function setupMemberBenefitsButton() {
+  const btn = document.getElementById('memberBenefitsBtn');
+
+  if (!btn) return;
+
+  btn.addEventListener('click', function () {
+    window.open('./assets/member-benefits.png', '_blank');
+  });
+}
+    
     function renderJoinForm() {
       showView('join');
     }
@@ -785,7 +796,9 @@ function renderMemberQrCode(memberId) {
 
     submitButton.addEventListener('click', handleJoinSubmit);
 
-    main();
+setupMemberBenefitsButton();
+
+main();
   </script>
 </body>
 </html>
