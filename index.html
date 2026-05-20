@@ -7,6 +7,10 @@
   <title>MONDAY 行動會員卡</title>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Noto Sans TC", Arial, sans-serif;
@@ -15,14 +19,14 @@
     }
 
     .page {
-      max-width: 420px;
+      max-width: 430px;
       margin: 0 auto;
       padding: 24px 16px 40px;
     }
 
     .card {
       background: #ffffff;
-      border-radius: 22px;
+      border-radius: 24px;
       padding: 22px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.08);
     }
@@ -30,20 +34,21 @@
     .logo {
       font-size: 22px;
       font-weight: 800;
-      letter-spacing: 0.06em;
-      margin-bottom: 16px;
+      letter-spacing: 0.08em;
+      margin-bottom: 18px;
     }
 
     .title {
-      font-size: 20px;
-      font-weight: 700;
+      font-size: 22px;
+      font-weight: 800;
       margin-bottom: 8px;
     }
 
-    .text {
+    .subtitle {
       font-size: 14px;
       line-height: 1.7;
-      color: #5c554d;
+      color: #6a6259;
+      margin-bottom: 18px;
     }
 
     .status {
@@ -56,6 +61,157 @@
       white-space: pre-wrap;
       line-height: 1.6;
     }
+
+    .member-box {
+      margin-top: 18px;
+      padding: 16px;
+      border-radius: 18px;
+      background: #f6f1ea;
+    }
+
+    .member-name {
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .member-id {
+      font-size: 15px;
+      color: #6a6259;
+      margin-bottom: 14px;
+    }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid #e8dfd3;
+      font-size: 14px;
+    }
+
+    .info-label {
+      color: #6a6259;
+    }
+
+    .info-value {
+      font-weight: 700;
+      text-align: right;
+    }
+
+    .form {
+      margin-top: 18px;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 7px;
+    }
+
+    .required {
+      color: #b45b46;
+      font-size: 12px;
+      margin-left: 4px;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 13px 14px;
+      border: 1px solid #ddd2c5;
+      border-radius: 14px;
+      font-size: 15px;
+      background: #fff;
+      color: #2f2a25;
+    }
+
+    input:focus,
+    select:focus {
+      outline: none;
+      border-color: #2f2a25;
+    }
+
+    .hint {
+      margin-top: 6px;
+      font-size: 12px;
+      color: #8a8177;
+      line-height: 1.5;
+    }
+
+    .checkbox-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 10px;
+      border: 1px solid #ddd2c5;
+      border-radius: 12px;
+      background: #fff;
+      font-size: 13px;
+    }
+
+    .checkbox-item input {
+      width: auto;
+    }
+
+    .terms-row {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+      padding: 12px;
+      background: #f6f1ea;
+      border-radius: 14px;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .terms-row input {
+      width: auto;
+      margin-top: 4px;
+    }
+
+    .button {
+      width: 100%;
+      margin-top: 10px;
+      padding: 15px 16px;
+      border: none;
+      border-radius: 15px;
+      background: #2f2a25;
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    .button.secondary {
+      background: #e9dfd2;
+      color: #2f2a25;
+    }
+
+    .button:disabled {
+      opacity: 0.55;
+    }
+
+    .section-title {
+      margin-top: 22px;
+      margin-bottom: 10px;
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    .hidden {
+      display: none;
+    }
   </style>
 </head>
 
@@ -63,13 +219,136 @@
   <div class="page">
     <div class="card">
       <div class="logo">MONDAY</div>
-      <div class="title">行動會員卡</div>
-      <div class="text">
-        正在準備會員資料，請稍候。
+
+      <div id="loadingView">
+        <div class="title">行動會員卡</div>
+        <div class="subtitle">正在準備會員資料，請稍候。</div>
+        <div id="status" class="status">LIFF 尚未啟動</div>
       </div>
 
-      <div id="status" class="status">
-        LIFF 尚未啟動
+      <div id="memberView" class="hidden">
+        <div class="title">行動會員卡</div>
+        <div class="subtitle">歡迎回來，以下是你的 MONDAY 會員資訊。</div>
+
+        <div class="member-box">
+          <div id="memberName" class="member-name">會員姓名</div>
+          <div id="memberId" class="member-id">會員ID</div>
+
+          <div class="info-row">
+            <div class="info-label">會員等級</div>
+            <div id="memberTier" class="info-value">MONDAY Silver</div>
+          </div>
+
+          <div class="info-row">
+            <div class="info-label">累積里程</div>
+            <div id="mileage" class="info-value">2,500</div>
+          </div>
+
+          <div class="info-row">
+            <div class="info-label">可用餘額</div>
+            <div id="availableBalance" class="info-value">$0</div>
+          </div>
+
+          <div class="info-row">
+            <div class="info-label">可用點數</div>
+            <div id="availablePoints" class="info-value">0</div>
+          </div>
+
+          <div class="info-row">
+            <div class="info-label">優惠券</div>
+            <div id="couponCount" class="info-value">0 張</div>
+          </div>
+
+          <div class="info-row">
+            <div class="info-label">最近更新</div>
+            <div id="updatedAt" class="info-value">-</div>
+          </div>
+        </div>
+
+        <button class="button secondary" type="button">
+          會員權益說明
+        </button>
+      </div>
+
+      <div id="joinView" class="hidden">
+        <div class="title">首次入會</div>
+        <div class="subtitle">
+          歡迎加入 MONDAY 會員。請填寫以下資料，完成後即可建立行動會員卡。
+        </div>
+
+        <form id="joinForm" class="form">
+          <div class="form-group">
+            <label>姓名 / 暱稱 <span class="required">必填</span></label>
+            <input id="displayName" type="text" placeholder="請輸入姓名或暱稱" />
+          </div>
+
+          <div class="form-group">
+            <label>手機號碼 <span class="required">必填</span></label>
+            <input id="phone" type="tel" placeholder="請輸入手機號碼" />
+          </div>
+
+          <div class="form-group">
+            <label>生日 <span class="required">必填</span></label>
+            <input id="birthday" type="date" />
+            <div class="hint">生日禮將依生日月份發送。</div>
+          </div>
+
+          <div class="section-title">小孩生日</div>
+
+          <div class="form-group">
+            <label>小孩生日 1</label>
+            <input id="childBirthday1" type="date" />
+          </div>
+
+          <div class="form-group">
+            <label>小孩生日 2</label>
+            <input id="childBirthday2" type="date" />
+          </div>
+
+          <div class="form-group">
+            <label>小孩生日 3</label>
+            <input id="childBirthday3" type="date" />
+          </div>
+
+          <div class="section-title">關注尺寸</div>
+
+          <div class="checkbox-grid">
+            <label class="checkbox-item"><input type="checkbox" name="sizeInterest" value="80–90" />80–90</label>
+            <label class="checkbox-item"><input type="checkbox" name="sizeInterest" value="90–100" />90–100</label>
+            <label class="checkbox-item"><input type="checkbox" name="sizeInterest" value="100–110" />100–110</label>
+            <label class="checkbox-item"><input type="checkbox" name="sizeInterest" value="110–120" />110–120</label>
+            <label class="checkbox-item"><input type="checkbox" name="sizeInterest" value="120–130" />120–130</label>
+            <label class="checkbox-item"><input type="checkbox" name="sizeInterest" value="130–140" />130–140</label>
+            <label class="checkbox-item"><input type="checkbox" name="sizeInterest" value="140–150" />140–150</label>
+            <label class="checkbox-item"><input type="checkbox" name="sizeInterest" value="150–160" />150–160</label>
+            <label class="checkbox-item"><input type="checkbox" name="sizeInterest" value="暫不填寫" />暫不填寫</label>
+          </div>
+
+          <div class="section-title">推薦人</div>
+
+          <div class="form-group">
+            <label>推薦人ID</label>
+            <input id="referrerId" type="text" placeholder="若無推薦人可留空" />
+            <div class="hint">若沒有推薦人，系統會記錄為「無推薦人」。</div>
+          </div>
+
+          <div class="form-group">
+            <div class="terms-row">
+              <input id="termsAgreed" type="checkbox" />
+              <div>
+                我已閱讀並同意 MONDAY 會員條款與個資使用說明。
+              </div>
+            </div>
+          </div>
+
+          <button id="submitButton" class="button" type="button">
+            加入 MONDAY 會員
+          </button>
+
+          <div id="formStatus" class="status">
+            本章只建立表單畫面，下一章才會開通正式送出。
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -80,14 +359,92 @@
     const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwDw1br3b-YEam4pwtUfKGTiKJ8ZJfjXsiguq2wi2VElkF6GsG0I2ChDByEJ-i8KbX9/exec';
     const LIFF_ID = '2010148452-qzfoTN8y';
 
+    let currentLineUserId = '';
+
+    const loadingView = document.getElementById('loadingView');
+    const memberView = document.getElementById('memberView');
+    const joinView = document.getElementById('joinView');
     const statusEl = document.getElementById('status');
+    const formStatus = document.getElementById('formStatus');
 
     function setStatus(message) {
       statusEl.textContent = message;
     }
 
+    function showView(viewName) {
+      loadingView.classList.add('hidden');
+      memberView.classList.add('hidden');
+      joinView.classList.add('hidden');
+
+      if (viewName === 'loading') loadingView.classList.remove('hidden');
+      if (viewName === 'member') memberView.classList.remove('hidden');
+      if (viewName === 'join') joinView.classList.remove('hidden');
+    }
+
+    function formatNumber(value) {
+      const number = Number(value || 0);
+      return number.toLocaleString('zh-TW');
+    }
+
+    function renderMemberCard(member) {
+      document.getElementById('memberName').textContent = member.displayName || 'MONDAY 會員';
+      document.getElementById('memberId').textContent = member.memberId || '-';
+      document.getElementById('memberTier').textContent = member.memberTier || 'MONDAY Silver';
+      document.getElementById('mileage').textContent = formatNumber(member.mileage || 2500);
+      document.getElementById('availableBalance').textContent = '$' + formatNumber(member.availableBalance || 0);
+      document.getElementById('availablePoints').textContent = formatNumber(member.availablePoints || 0);
+      document.getElementById('couponCount').textContent = formatNumber(member.couponCount || 0) + ' 張';
+      document.getElementById('updatedAt').textContent = member.updatedAt || '-';
+
+      showView('member');
+    }
+
+    function renderJoinForm() {
+      showView('join');
+    }
+
+    function getSelectedSizes() {
+      const checked = Array.from(document.querySelectorAll('input[name="sizeInterest"]:checked'));
+      return checked.map((item) => item.value).join(',');
+    }
+
+    function validateJoinFormPreviewOnly() {
+      const displayName = document.getElementById('displayName').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const birthday = document.getElementById('birthday').value;
+      const termsAgreed = document.getElementById('termsAgreed').checked;
+
+      if (!displayName) {
+        formStatus.textContent = '請填寫姓名 / 暱稱';
+        return false;
+      }
+
+      if (!phone) {
+        formStatus.textContent = '請填寫手機號碼';
+        return false;
+      }
+
+      if (!birthday) {
+        formStatus.textContent = '請填寫生日';
+        return false;
+      }
+
+      if (!termsAgreed) {
+        formStatus.textContent = '請先勾選同意會員條款';
+        return false;
+      }
+
+      formStatus.textContent =
+        '表單檢查通過。下一章會開通正式送出，寫入會員資料並產生會員ID。' +
+        '\nLINE User ID：' + currentLineUserId +
+        '\n關注尺寸：' + (getSelectedSizes() || '未填寫');
+
+      return true;
+    }
+
     async function main() {
       try {
+        showView('loading');
         setStatus('正在初始化 LIFF...');
 
         if (typeof liff === 'undefined') {
@@ -107,9 +464,9 @@
         }
 
         const profile = await liff.getProfile();
-        const lineUserId = profile.userId;
+        currentLineUserId = profile.userId;
 
-        setStatus('已取得 LINE User ID，準備查詢會員：' + lineUserId);
+        setStatus('已取得 LINE User ID，準備查詢會員：' + currentLineUserId);
 
         const response = await fetch(WEB_APP_URL, {
           method: 'POST',
@@ -118,22 +475,27 @@
           },
           body: JSON.stringify({
             action: 'findMemberByLineUserId',
-            lineUserId: lineUserId
+            lineUserId: currentLineUserId
           })
         });
 
         const data = await response.json();
 
         if (data.ok && data.found) {
-          setStatus('已找到會員：' + data.member.memberId);
+          renderMemberCard(data.member);
         } else {
-          setStatus('尚未入會，下一步會顯示首次入會表單');
+          renderJoinForm();
         }
 
       } catch (error) {
+        showView('loading');
         setStatus('發生錯誤：' + error.message);
       }
     }
+
+    document.getElementById('submitButton').addEventListener('click', function () {
+      validateJoinFormPreviewOnly();
+    });
 
     main();
   </script>
