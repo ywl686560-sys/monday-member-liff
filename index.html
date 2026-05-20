@@ -62,6 +62,16 @@
       line-height: 1.6;
     }
 
+    .status.success {
+      background: #edf7ed;
+      color: #2d6a32;
+    }
+
+    .status.error {
+      background: #fff0ed;
+      color: #9b3d2e;
+    }
+
     .member-box {
       margin-top: 18px;
       padding: 16px;
@@ -154,11 +164,12 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      padding: 10px 10px;
+      padding: 10px;
       border: 1px solid #ddd2c5;
       border-radius: 12px;
       background: #fff;
       font-size: 13px;
+      font-weight: 500;
     }
 
     .checkbox-item input {
@@ -346,7 +357,7 @@
           </button>
 
           <div id="formStatus" class="status">
-            本章只建立表單畫面，下一章才會開通正式送出。
+            請確認資料正確後送出。
           </div>
         </form>
       </div>
@@ -360,15 +371,30 @@
     const LIFF_ID = '2010148452-qzfoTN8y';
 
     let currentLineUserId = '';
+    let isSubmitting = false;
 
     const loadingView = document.getElementById('loadingView');
     const memberView = document.getElementById('memberView');
     const joinView = document.getElementById('joinView');
     const statusEl = document.getElementById('status');
     const formStatus = document.getElementById('formStatus');
+    const submitButton = document.getElementById('submitButton');
 
     function setStatus(message) {
       statusEl.textContent = message;
+    }
+
+    function setFormStatus(message, type) {
+      formStatus.textContent = message;
+      formStatus.classList.remove('success', 'error');
+
+      if (type === 'success') {
+        formStatus.classList.add('success');
+      }
+
+      if (type === 'error') {
+        formStatus.classList.add('error');
+      }
     }
 
     function showView(viewName) {
@@ -408,38 +434,116 @@
       return checked.map((item) => item.value).join(',');
     }
 
-    function validateJoinFormPreviewOnly() {
-      const displayName = document.getElementById('displayName').value.trim();
-      const phone = document.getElementById('phone').value.trim();
-      const birthday = document.getElementById('birthday').value;
-      const termsAgreed = document.getElementById('termsAgreed').checked;
+    function getJoinFormData() {
+      return {
+        lineUserId: currentLineUserId,
+        displayName: document.getElementById('displayName').value.trim(),
+        phone: document.getElementById('phone').value.trim(),
+        birthday: document.getElementById('birthday').value,
+        termsAgreed: document.getElementById('termsAgreed').checked,
+        childBirthday1: document.getElementById('childBirthday1').value,
+        childBirthday2: document.getElementById('childBirthday2').value,
+        childBirthday3: document.getElementById('childBirthday3').value,
+        sizeInterest: getSelectedSizes() || '暫不填寫',
+        referrerId: document.getElementById('referrerId').value.trim() || '無推薦人'
+      };
+    }
 
-      if (!displayName) {
-        formStatus.textContent = '請填寫姓名 / 暱稱';
-        return false;
+    function validateJoinForm(data) {
+      if (!data.lineUserId) {
+        return '尚未取得 LINE User ID，請重新開啟會員卡';
       }
 
-      if (!phone) {
-        formStatus.textContent = '請填寫手機號碼';
-        return false;
+      if (!data.displayName) {
+        return '請填寫姓名 / 暱稱';
       }
 
-      if (!birthday) {
-        formStatus.textContent = '請填寫生日';
-        return false;
+      if (!data.phone) {
+        return '請填寫手機號碼';
       }
 
-      if (!termsAgreed) {
-        formStatus.textContent = '請先勾選同意會員條款';
-        return false;
+      if (!data.birthday) {
+        return '請填寫生日';
       }
 
-      formStatus.textContent =
-        '表單檢查通過。下一章會開通正式送出，寫入會員資料並產生會員ID。' +
-        '\nLINE User ID：' + currentLineUserId +
-        '\n關注尺寸：' + (getSelectedSizes() || '未填寫');
+      if (!data.termsAgreed) {
+        return '請先勾選同意會員條款';
+      }
 
-      return true;
+      return '';
+    }
+
+    async function findMemberByLineUserId(lineUserId) {
+      const response = await fetch(WEB_APP_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'text/plain;charset=utf-8'
+        },
+        body: JSON.stringify({
+          action: 'findMemberByLineUserId',
+          lineUserId: lineUserId
+        })
+      });
+
+      return response.json();
+    }
+
+    async function createMember(memberData) {
+      const response = await fetch(WEB_APP_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'text/plain;charset=utf-8'
+        },
+        body: JSON.stringify({
+          action: 'createMember',
+          member: memberData
+        })
+      });
+
+      return response.json();
+    }
+
+    async function handleJoinSubmit() {
+      if (isSubmitting) {
+        return;
+      }
+
+      const memberData = getJoinFormData();
+      const errorMessage = validateJoinForm(memberData);
+
+      if (errorMessage) {
+        setFormStatus(errorMessage, 'error');
+        return;
+      }
+
+      isSubmitting = true;
+      submitButton.disabled = true;
+      submitButton.textContent = '正在建立會員資料...';
+      setFormStatus('正在建立會員資料，請勿重複點擊。', '');
+
+      try {
+        const createResult = await createMember(memberData);
+
+        if (!createResult.ok) {
+          throw new Error(createResult.error || '建立會員失敗');
+        }
+
+        const checkResult = await findMemberByLineUserId(currentLineUserId);
+
+        if (checkResult.ok && checkResult.found) {
+          setFormStatus('入會成功，正在顯示會員卡。', 'success');
+          renderMemberCard(checkResult.member);
+          return;
+        }
+
+        throw new Error('會員建立完成，但查詢會員資料失敗，請稍後重新開啟會員卡');
+
+      } catch (error) {
+        setFormStatus('送出失敗：' + error.message, 'error');
+        submitButton.disabled = false;
+        submitButton.textContent = '加入 MONDAY 會員';
+        isSubmitting = false;
+      }
     }
 
     async function main() {
@@ -468,18 +572,7 @@
 
         setStatus('已取得 LINE User ID，準備查詢會員：' + currentLineUserId);
 
-        const response = await fetch(WEB_APP_URL, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'text/plain;charset=utf-8'
-          },
-          body: JSON.stringify({
-            action: 'findMemberByLineUserId',
-            lineUserId: currentLineUserId
-          })
-        });
-
-        const data = await response.json();
+        const data = await findMemberByLineUserId(currentLineUserId);
 
         if (data.ok && data.found) {
           renderMemberCard(data.member);
@@ -493,9 +586,7 @@
       }
     }
 
-    document.getElementById('submitButton').addEventListener('click', function () {
-      validateJoinFormPreviewOnly();
-    });
+    submitButton.addEventListener('click', handleJoinSubmit);
 
     main();
   </script>
