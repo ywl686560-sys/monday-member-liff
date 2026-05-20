@@ -557,19 +557,71 @@
       return number.toLocaleString('zh-TW');
     }
 
-    function renderMemberCard(member) {
-      document.getElementById('memberName').textContent = member.displayName || 'MONDAY 會員';
-      document.getElementById('memberId').textContent = member.memberId || '-';
-      document.getElementById('memberTier').textContent = member.memberTier || 'MONDAY Silver';
-      document.getElementById('mileage').textContent = formatNumber(member.mileage || 2500);
-      document.getElementById('availableBalance').textContent = '$' + formatNumber(member.availableBalance || 0);
-      document.getElementById('availablePoints').textContent = formatNumber(member.availablePoints || 0);
-      document.getElementById('couponCount').textContent = formatNumber(member.couponCount || 0) + ' 張';
-      document.getElementById('updatedAt').textContent = member.updatedAt || '-';
+    async function loadMemberCard(lineUserId) {
+  const response = await fetch(WEB_APP_URL, {
+    method: 'POST',
+    body: JSON.stringify({
+      action: 'getMemberCardByLineUserId',
+      lineUserId: lineUserId
+    })
+  });
 
-      showView('member');
-    }
+  const result = await response.json();
 
+  if (!result.ok) {
+    console.error(result.message || '會員卡資料讀取失敗');
+    return;
+  }
+
+  renderMemberCard(result.card);
+}
+    
+    function renderMemberCard(card) {
+  document.getElementById('memberCardSection').classList.remove('hidden');
+
+  document.getElementById('cardMemberName').textContent =
+    card.name || 'MONDAY 會員';
+
+  document.getElementById('cardMemberId').textContent =
+    card.memberId || '-';
+
+  document.getElementById('cardTierMileage').textContent =
+    `${card.memberTier || 'MONDAY Silver'}｜累積里程 ${formatNumber(card.mileage || 0)}`;
+
+  document.getElementById('cardBalance').textContent =
+    `$${formatNumber(card.availableBalance || 0)}`;
+
+  document.getElementById('cardPoints').textContent =
+    `${formatNumber(card.availablePoints || 0)} 點` +
+    (card.pointsExpireAt ? `｜${card.pointsExpireAt} 到期` : '');
+
+  document.getElementById('cardCoupons').textContent =
+    `${formatNumber(card.availableCoupons || 0)} 張`;
+
+  document.getElementById('cardExpireNotice').textContent =
+    card.recentExpireNotice || '目前沒有即將到期提醒';
+
+  document.getElementById('cardUpdatedAt').textContent =
+    card.lastUpdatedAt || '-';
+
+  renderMemberQrCode(card.memberId);
+
+  showView('member');
+}
+    
+function renderMemberQrCode(memberId) {
+  const qrContainer = document.getElementById('memberQrCode');
+  qrContainer.innerHTML = '';
+
+  if (!memberId) return;
+
+  new QRCode(qrContainer, {
+    text: memberId,
+    width: 160,
+    height: 160,
+    correctLevel: QRCode.CorrectLevel.M
+  });
+}
     function renderJoinForm() {
       showView('join');
     }
@@ -677,7 +729,7 @@
 
         if (checkResult.ok && checkResult.found) {
           setFormStatus('入會成功，正在顯示會員卡。', 'success');
-          renderMemberCard(checkResult.member);
+          await loadMemberCard(currentLineUserId);
           return;
         }
 
@@ -720,7 +772,7 @@
         const data = await findMemberByLineUserId(currentLineUserId);
 
         if (data.ok && data.found) {
-          renderMemberCard(data.member);
+          await loadMemberCard(currentLineUserId);
         } else {
           renderJoinForm();
         }
