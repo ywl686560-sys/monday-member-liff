@@ -28,7 +28,7 @@
       background: #ffffff;
       border-radius: 24px;
       padding: 22px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     }
 
     .logo {
@@ -72,56 +72,8 @@
       color: #9b3d2e;
     }
 
-    .member-box {
-      margin-top: 18px;
-      padding: 16px;
-      border-radius: 18px;
-      background: #f6f1ea;
-    }
-
-    .member-name {
-      font-size: 20px;
-      font-weight: 800;
-      margin-bottom: 4px;
-    }
-
-    .member-id {
-      font-size: 15px;
-      color: #6a6259;
-      margin-bottom: 14px;
-    }
-
-    .member-identity-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 16px;
-}
-
-.member-badge {
-  width: 64px;
-  height: 64px;
-  object-fit: contain;
-  flex-shrink: 0;
-}
-    
-    .info-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 10px 0;
-      border-top: 1px solid #e8dfd3;
-      font-size: 14px;
-    }
-
-    .info-label {
-      color: #6a6259;
-    }
-
-    .info-value {
-      font-weight: 700;
-      text-align: right;
+    .hidden {
+      display: none !important;
     }
 
     .form {
@@ -217,6 +169,7 @@
       color: #ffffff;
       font-size: 16px;
       font-weight: 800;
+      cursor: pointer;
     }
 
     .button.secondary {
@@ -226,6 +179,7 @@
 
     .button:disabled {
       opacity: 0.55;
+      cursor: not-allowed;
     }
 
     .section-title {
@@ -235,105 +189,112 @@
       font-weight: 800;
     }
 
-    .hidden {
-      display: none;
+    .member-card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 20px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     }
-.hidden {
-  display: none;
-}
 
-.member-card-section {
-  padding: 20px;
-}
+    .member-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
 
-.member-card {
-  max-width: 420px;
-  margin: 0 auto;
-  padding: 20px;
-  border-radius: 24px;
-  background: #ffffff;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-}
+    .member-logo {
+      width: 180px;
+      max-width: 62%;
+      height: auto;
+      object-fit: contain;
+    }
 
-.member-card-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-  margin-bottom: 20px;
-}
+    .member-character {
+      width: 92px;
+      height: auto;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
 
-.member-logo {
-  width: 180px;
-  max-width: 62%;
-  height: auto;
-  object-fit: contain;
-}
+    .member-identity-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 16px;
+      margin-bottom: 18px;
+      border-radius: 18px;
+      background: #f6f1ea;
+    }
 
-.member-character {
-  width: 92px;
-  height: auto;
-  object-fit: contain;
-}
+    .member-name {
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
 
-.member-name {
-  font-size: 20px;
-  font-weight: 700;
-}
+    .member-id {
+      font-size: 14px;
+      color: #6a6259;
+    }
 
-.member-id {
-  margin-top: 4px;
-  font-size: 14px;
-  color: #777;
-}
+    .member-badge {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
 
-.member-card-body {
-  display: grid;
-  gap: 20px;
-}
+    .member-card-body {
+      display: grid;
+      gap: 18px;
+    }
 
-.member-qrcode {
-  display: flex;
-  justify-content: center;
-  padding: 16px;
-  border-radius: 18px;
-  background: #f7f7f7;
-}
+    .member-qrcode {
+      display: flex;
+      justify-content: center;
+      padding: 16px;
+      border-radius: 18px;
+      background: #f7f7f7;
+    }
 
-.member-info-list {
-  display: grid;
-  gap: 12px;
-}
+    .member-info-list {
+      display: grid;
+      gap: 12px;
+    }
 
-.member-info-list div {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #eeeeee;
-}
+    .member-info-list div {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #eeeeee;
+    }
 
-.member-info-list span {
-  color: #777;
-  font-size: 14px;
-}
+    .member-info-list span {
+      color: #777;
+      font-size: 14px;
+    }
 
-.member-info-list strong {
-  text-align: right;
-  font-size: 14px;
-}
+    .member-info-list strong {
+      text-align: right;
+      font-size: 14px;
+    }
 
-.member-benefits-btn {
-  width: 100%;
-  margin-top: 20px;
-  padding: 14px 16px;
-  border: none;
-  border-radius: 999px;
-  background: #111111;
-  color: #ffffff;
-  font-size: 15px;
-  font-weight: 700;
-}  
+    .member-benefits-btn {
+      width: 100%;
+      margin-top: 20px;
+      padding: 14px 16px;
+      border: none;
+      border-radius: 999px;
+      background: #e9dfd2;
+      color: #2f2a25;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+    }
   </style>
 </head>
 
@@ -346,50 +307,6 @@
         <div class="title">行動會員卡</div>
         <div class="subtitle">正在準備會員資料，請稍候。</div>
         <div id="status" class="status">LIFF 尚未啟動</div>
-      </div>
-
-      <div id="memberView" class="hidden">
-        <div class="title">行動會員卡</div>
-        <div class="subtitle">歡迎回來，以下是你的 MONDAY 會員資訊。</div>
-
-        <div class="member-box">
-          <div id="memberName" class="member-name">會員姓名</div>
-          <div id="memberId" class="member-id">會員ID</div>
-
-          <div class="info-row">
-            <div class="info-label">會員等級</div>
-            <div id="memberTier" class="info-value">MONDAY Gold</div>
-          </div>
-
-          <div class="info-row">
-            <div class="info-label">累積里程</div>
-            <div id="mileage" class="info-value">1,000</div>
-          </div>
-
-          <div class="info-row">
-            <div class="info-label">可用餘額</div>
-            <div id="availableBalance" class="info-value">$0</div>
-          </div>
-
-          <div class="info-row">
-            <div class="info-label">可用點數</div>
-            <div id="availablePoints" class="info-value">100</div>
-          </div>
-
-          <div class="info-row">
-            <div class="info-label">優惠券</div>
-            <div id="couponCount" class="info-value">0 張</div>
-          </div>
-
-          <div class="info-row">
-            <div class="info-label">最近更新</div>
-            <div id="updatedAt" class="info-value">-</div>
-          </div>
-        </div>
-
-        <button class="button secondary" type="button">
-          會員權益說明
-        </button>
       </div>
 
       <div id="joinView" class="hidden">
@@ -471,76 +388,78 @@
             請確認資料正確後送出。
           </div>
         </form>
-        <section id="memberCardSection" class="member-card-section hidden">
-  <div class="member-card">
-    <div class="member-card-header">
-  <img
-    src="./assets/monday-logo-horizontal.png"
-    alt="MONDAY Logo"
-    class="member-logo"
-  />
-
-  <img
-    src="./assets/member-card-character.png"
-    alt="MONDAY Member Character"
-    class="member-character"
-  />
-<div class="member-identity-row">
-  <div>
-    <div id="cardMemberName" class="member-name">MONDAY 會員</div>
-    <div id="cardMemberId" class="member-id">會員ID</div>
-  </div>
-
-  <img
-    src="./assets/badge-gold.png"
-    alt="MONDAY Gold Badge"
-    class="member-badge"
-  />
-</div>
-    </div>
-
-    <div class="member-card-body">
-      <div id="memberQrCode" class="member-qrcode"></div>
-
-      <div class="member-info-list">
-        <div>
-          <span>會員等級</span>
-          <strong id="cardTierMileage">MONDAY Gold｜累積里程 1,000</strong>
-        </div>
-
-        <div>
-          <span>可用餘額</span>
-          <strong id="cardBalance">$0</strong>
-        </div>
-
-        <div>
-          <span>可用點數</span>
-          <strong id="cardPoints">100 點</strong>
-        </div>
-
-        <div>
-          <span>優惠券</span>
-          <strong id="cardCoupons">0 張</strong>
-        </div>
-
-        <div>
-          <span>最近到期提醒</span>
-          <strong id="cardExpireNotice">目前沒有即將到期提醒</strong>
-        </div>
-
-        <div>
-          <span>最近更新時間</span>
-          <strong id="cardUpdatedAt">-</strong>
-        </div>
       </div>
-    </div>
 
-    <button id="memberBenefitsBtn" class="member-benefits-btn" type="button">
-      查看會員權益說明
-    </button>
-  </div>
-</section>
-      </div>
+      <section id="memberCardSection" class="hidden">
+        <div class="member-card">
+          <div class="member-card-header">
+            <img
+              src="./assets/monday-logo-horizontal.png"
+              alt="MONDAY Logo"
+              class="member-logo"
+            />
+
+            <img
+              src="./assets/member-card-character.png"
+              alt="MONDAY Member Character"
+              class="member-character"
+            />
+          </div>
+
+          <div class="member-identity-row">
+            <div>
+              <div id="cardMemberName" class="member-name">MONDAY 會員</div>
+              <div id="cardMemberId" class="member-id">會員ID</div>
+            </div>
+
+            <img
+              src="./assets/badge-gold.png"
+              alt="MONDAY Gold Badge"
+              class="member-badge"
+            />
+          </div>
+
+          <div class="member-card-body">
+            <div id="memberQrCode" class="member-qrcode"></div>
+
+            <div class="member-info-list">
+              <div>
+                <span>會員等級</span>
+                <strong id="cardTierMileage">MONDAY Gold｜累積里程 1,000</strong>
+              </div>
+
+              <div>
+                <span>可用餘額</span>
+                <strong id="cardBalance">$0</strong>
+              </div>
+
+              <div>
+                <span>可用點數</span>
+                <strong id="cardPoints">100 點</strong>
+              </div>
+
+              <div>
+                <span>優惠券</span>
+                <strong id="cardCoupons">0 張</strong>
+              </div>
+
+              <div>
+                <span>最近到期提醒</span>
+                <strong id="cardExpireNotice">目前沒有即將到期提醒</strong>
+              </div>
+
+              <div>
+                <span>最近更新時間</span>
+                <strong id="cardUpdatedAt">-</strong>
+              </div>
+            </div>
+          </div>
+
+          <button id="memberBenefitsBtn" class="member-benefits-btn" type="button">
+            查看會員權益說明
+          </button>
+        </div>
+      </section>
     </div>
   </div>
 
@@ -555,8 +474,8 @@
     let isSubmitting = false;
 
     const loadingView = document.getElementById('loadingView');
-    const memberView = document.getElementById('memberView');
     const joinView = document.getElementById('joinView');
+    const memberCardSection = document.getElementById('memberCardSection');
     const statusEl = document.getElementById('status');
     const formStatus = document.getElementById('formStatus');
     const submitButton = document.getElementById('submitButton');
@@ -580,12 +499,12 @@
 
     function showView(viewName) {
       loadingView.classList.add('hidden');
-      memberView.classList.add('hidden');
       joinView.classList.add('hidden');
+      memberCardSection.classList.add('hidden');
 
       if (viewName === 'loading') loadingView.classList.remove('hidden');
-      if (viewName === 'member') memberView.classList.remove('hidden');
       if (viewName === 'join') joinView.classList.remove('hidden');
+      if (viewName === 'memberCard') memberCardSection.classList.remove('hidden');
     }
 
     function formatNumber(value) {
@@ -593,82 +512,96 @@
       return number.toLocaleString('zh-TW');
     }
 
+    async function findMemberByLineUserId(lineUserId) {
+      const response = await fetch(WEB_APP_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'text/plain;charset=utf-8'
+        },
+        body: JSON.stringify({
+          action: 'findMemberByLineUserId',
+          lineUserId: lineUserId
+        })
+      });
+
+      return response.json();
+    }
+
     async function loadMemberCard(lineUserId) {
-  const response = await fetch(WEB_APP_URL, {
-    method: 'POST',
-    body: JSON.stringify({
-      action: 'getMemberCardByLineUserId',
-      lineUserId: lineUserId
-    })
-  });
+      const response = await fetch(WEB_APP_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'text/plain;charset=utf-8'
+        },
+        body: JSON.stringify({
+          action: 'getMemberCardByLineUserId',
+          lineUserId: lineUserId
+        })
+      });
 
-  const result = await response.json();
+      const result = await response.json();
 
-  if (!result.ok) {
-    console.error(result.message || '會員卡資料讀取失敗');
-    return;
-  }
+      if (!result.ok) {
+        throw new Error(result.message || '會員卡資料讀取失敗');
+      }
 
-  renderMemberCard(result.card);
-}
-    
+      renderMemberCard(result.card);
+    }
+
     function renderMemberCard(card) {
-  document.getElementById('memberCardSection').classList.remove('hidden');
+      document.getElementById('cardMemberName').textContent =
+        card.name || 'MONDAY 會員';
 
-  document.getElementById('cardMemberName').textContent =
-    card.name || 'MONDAY 會員';
+      document.getElementById('cardMemberId').textContent =
+        card.memberId || '-';
 
-  document.getElementById('cardMemberId').textContent =
-    card.memberId || '-';
+      document.getElementById('cardTierMileage').textContent =
+        `${card.memberTier || 'MONDAY Gold'}｜累積里程 ${formatNumber(card.mileage || 0)}`;
 
-  document.getElementById('cardTierMileage').textContent =
-    `${card.memberTier || 'MONDAY Gold'}｜累積里程 ${formatNumber(card.mileage || 0)}`;
+      document.getElementById('cardBalance').textContent =
+        `$${formatNumber(card.availableBalance || 0)}`;
 
-  document.getElementById('cardBalance').textContent =
-    `$${formatNumber(card.availableBalance || 0)}`;
+      document.getElementById('cardPoints').textContent =
+        `${formatNumber(card.availablePoints || 0)} 點` +
+        (card.pointsExpireAt ? `｜${card.pointsExpireAt} 到期` : '');
 
-  document.getElementById('cardPoints').textContent =
-    `${formatNumber(card.availablePoints || 0)} 點` +
-    (card.pointsExpireAt ? `｜${card.pointsExpireAt} 到期` : '');
+      document.getElementById('cardCoupons').textContent =
+        `${formatNumber(card.availableCoupons || 0)} 張`;
 
-  document.getElementById('cardCoupons').textContent =
-    `${formatNumber(card.availableCoupons || 0)} 張`;
+      document.getElementById('cardExpireNotice').textContent =
+        card.recentExpireNotice || '目前沒有即將到期提醒';
 
-  document.getElementById('cardExpireNotice').textContent =
-    card.recentExpireNotice || '目前沒有即將到期提醒';
+      document.getElementById('cardUpdatedAt').textContent =
+        card.lastUpdatedAt || '-';
 
-  document.getElementById('cardUpdatedAt').textContent =
-    card.lastUpdatedAt || '-';
+      renderMemberQrCode(card.memberId);
+      showView('memberCard');
+    }
 
-  renderMemberQrCode(card.memberId);
+    function renderMemberQrCode(memberId) {
+      const qrContainer = document.getElementById('memberQrCode');
+      qrContainer.innerHTML = '';
 
-  showView('member');
-}
-    
-function renderMemberQrCode(memberId) {
-  const qrContainer = document.getElementById('memberQrCode');
-  qrContainer.innerHTML = '';
+      if (!memberId) return;
 
-  if (!memberId) return;
+      new QRCode(qrContainer, {
+        text: memberId,
+        width: 160,
+        height: 160,
+        correctLevel: QRCode.CorrectLevel.M
+      });
+    }
 
-  new QRCode(qrContainer, {
-    text: memberId,
-    width: 160,
-    height: 160,
-    correctLevel: QRCode.CorrectLevel.M
-  });
-}
-    
     function setupMemberBenefitsButton() {
-  const btn = document.getElementById('memberBenefitsBtn');
+      const btn = document.getElementById('memberBenefitsBtn');
 
-  if (!btn) return;
+      if (!btn) return;
 
-  btn.addEventListener('click', function () {
-    window.open('./assets/member-benefits.png', '_blank');
-  });
-}
-    
+      btn.addEventListener('click', function () {
+        window.location.href = './assets/member-benefits.png';
+      });
+    }
+
     function renderJoinForm() {
       showView('join');
     }
@@ -715,21 +648,6 @@ function renderMemberQrCode(memberId) {
       }
 
       return '';
-    }
-
-    async function findMemberByLineUserId(lineUserId) {
-      const response = await fetch(WEB_APP_URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'text/plain;charset=utf-8'
-        },
-        body: JSON.stringify({
-          action: 'findMemberByLineUserId',
-          lineUserId: lineUserId
-        })
-      });
-
-      return response.json();
     }
 
     async function createMember(memberData) {
@@ -781,7 +699,6 @@ function renderMemberQrCode(memberId) {
         }
 
         throw new Error('會員建立完成，但查詢會員資料失敗，請稍後重新開啟會員卡');
-
       } catch (error) {
         setFormStatus('送出失敗：' + error.message, 'error');
         submitButton.disabled = false;
@@ -823,7 +740,6 @@ function renderMemberQrCode(memberId) {
         } else {
           renderJoinForm();
         }
-
       } catch (error) {
         showView('loading');
         setStatus('發生錯誤：' + error.message);
@@ -831,10 +747,8 @@ function renderMemberQrCode(memberId) {
     }
 
     submitButton.addEventListener('click', handleJoinSubmit);
-
-setupMemberBenefitsButton();
-
-main();
+    setupMemberBenefitsButton();
+    main();
   </script>
 </body>
 </html>
