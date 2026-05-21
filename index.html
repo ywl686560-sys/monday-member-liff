@@ -335,7 +335,7 @@
 
           <div class="info-row">
             <div class="info-label">會員等級</div>
-            <div id="memberTier" class="info-value">MONDAY Silver</div>
+            <div id="memberTier" class="info-value">MONDAY Gold</div>
           </div>
 
           <div class="info-row">
@@ -469,7 +469,7 @@
       <div class="member-info-list">
         <div>
           <span>會員等級</span>
-          <strong id="cardTierMileage">MONDAY Silver｜累積里程 2,500</strong>
+          <strong id="cardTierMileage">MONDAY Gold｜累積里程 2,500</strong>
         </div>
 
         <div>
@@ -586,7 +586,7 @@
     card.memberId || '-';
 
   document.getElementById('cardTierMileage').textContent =
-    `${card.memberTier || 'MONDAY Silver'}｜累積里程 ${formatNumber(card.mileage || 0)}`;
+    `${card.memberTier || 'MONDAY Gold'}｜累積里程 ${formatNumber(card.mileage || 0)}`;
 
   document.getElementById('cardBalance').textContent =
     `$${formatNumber(card.availableBalance || 0)}`;
