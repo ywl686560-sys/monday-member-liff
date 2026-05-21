@@ -91,6 +91,21 @@
       margin-bottom: 14px;
     }
 
+    .member-identity-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.member-badge {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+    
     .info-row {
       display: flex;
       justify-content: space-between;
@@ -243,13 +258,21 @@
 .member-card-header {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 14px;
   margin-bottom: 20px;
 }
 
 .member-logo {
-  width: 64px;
-  height: 64px;
+  width: 180px;
+  max-width: 62%;
+  height: auto;
+  object-fit: contain;
+}
+
+.member-character {
+  width: 92px;
+  height: auto;
   object-fit: contain;
 }
 
@@ -451,16 +474,29 @@
         <section id="memberCardSection" class="member-card-section hidden">
   <div class="member-card">
     <div class="member-card-header">
-      <img
-        src="./assets/monday-person-logo.png"
-        alt="MONDAY Logo"
-        class="member-logo"
-      />
+  <img
+    src="./assets/monday-logo-horizontal.png"
+    alt="MONDAY Logo"
+    class="member-logo"
+  />
 
-      <div>
-        <div id="cardMemberName" class="member-name">MONDAY 會員</div>
-        <div id="cardMemberId" class="member-id">會員ID</div>
-      </div>
+  <img
+    src="./assets/member-card-character.png"
+    alt="MONDAY Member Character"
+    class="member-character"
+  />
+<div class="member-identity-row">
+  <div>
+    <div id="cardMemberName" class="member-name">MONDAY 會員</div>
+    <div id="cardMemberId" class="member-id">會員ID</div>
+  </div>
+
+  <img
+    src="./assets/badge-gold.png"
+    alt="MONDAY Gold Badge"
+    class="member-badge"
+  />
+</div>
     </div>
 
     <div class="member-card-body">
