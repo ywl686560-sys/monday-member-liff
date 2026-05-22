@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
   <title>MONDAY 行動會員卡</title>
 
@@ -11,31 +11,57 @@
       box-sizing: border-box;
     }
 
+    :root {
+      --tea-bg: #ead8c1;
+      --tea-page: #efe2d2;
+      --cream: #fff8ee;
+      --cream-2: #fbf1e3;
+      --line: #e8d8c2;
+      --gold: #b88a3d;
+      --gold-2: #d9b86f;
+      --text: #2f2a25;
+      --muted: #71665a;
+    }
+
+    html,
     body {
+      width: 100%;
+      min-height: 100%;
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Noto Sans TC", Arial, sans-serif;
-      background: #f6f1ea;
-      color: #2f2a25;
+      background: var(--tea-bg);
+      color: var(--text);
+    }
+
+    body.member-mode {
+      background: linear-gradient(180deg, #ead8c1 0%, #f3e7d8 100%);
     }
 
     .page {
-      max-width: 430px;
+      width: 100%;
+      max-width: none;
       margin: 0 auto;
-      padding: 18px 14px 36px;
+      padding: 10px 8px 18px;
     }
 
     .card {
-      background: #ffffff;
-      border-radius: 24px;
-      padding: 18px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      width: 100%;
+      min-height: calc(100svh - 20px);
+      background: var(--tea-page);
+      border-radius: 22px;
+      padding: 12px;
+      box-shadow: 0 12px 28px rgba(92, 66, 35, 0.16);
     }
 
     .logo {
       font-size: 22px;
       font-weight: 800;
       letter-spacing: 0.08em;
-      margin-bottom: 18px;
+      margin: 2px 4px 12px;
+    }
+
+    body.member-mode .logo {
+      display: none;
     }
 
     .title {
@@ -47,14 +73,14 @@
     .subtitle {
       font-size: 14px;
       line-height: 1.7;
-      color: #6a6259;
+      color: var(--muted);
       margin-bottom: 18px;
     }
 
     .status {
       margin-top: 16px;
       padding: 12px;
-      background: #f1ece4;
+      background: #f5eadc;
       border-radius: 14px;
       font-size: 13px;
       word-break: break-all;
@@ -105,13 +131,13 @@
       border-radius: 14px;
       font-size: 15px;
       background: #fff;
-      color: #2f2a25;
+      color: var(--text);
     }
 
     input:focus,
     select:focus {
       outline: none;
-      border-color: #2f2a25;
+      border-color: var(--text);
     }
 
     .hint {
@@ -165,7 +191,7 @@
       padding: 15px 16px;
       border: none;
       border-radius: 15px;
-      background: #2f2a25;
+      background: var(--text);
       color: #ffffff;
       font-size: 16px;
       font-weight: 800;
@@ -184,113 +210,131 @@
       font-weight: 800;
     }
 
+    .member-card-section {
+      width: 100%;
+    }
+
     .member-card {
-      background: #ffffff;
-      border-radius: 26px;
-      padding: 14px;
+      width: 100%;
+      max-width: 430px;
+      margin: 0 auto;
+      background: var(--tea-page);
+      border-radius: 20px;
+      padding: 8px;
     }
 
     .mc-hero {
       overflow: hidden;
-      border-radius: 22px;
-      background: #f8f4ee;
-      border: 1px solid #eee2d2;
-      margin-bottom: 14px;
+      border-radius: 20px;
+      background: var(--cream);
+      border: 1px solid var(--line);
+      margin-bottom: 10px;
+      box-shadow: 0 4px 12px rgba(116, 83, 43, 0.08);
     }
 
     .mc-hero-image {
       display: block;
       width: 100%;
-      height: auto;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
     }
 
     .mc-identity-row {
       display: grid;
-      grid-template-columns: 1fr 88px;
-      gap: 12px;
+      grid-template-columns: minmax(0, 1fr) 82px;
+      gap: 8px;
       align-items: stretch;
-      margin-bottom: 14px;
+      margin-bottom: 10px;
+    }
+
+    .mc-identity-main,
+    .mc-badge-box,
+    .mc-qr-box,
+    .mc-stat-card,
+    .mc-updated-row {
+      background: var(--cream-2);
+      border: 1px solid var(--line);
+      box-shadow: 0 2px 8px rgba(116, 83, 43, 0.06);
     }
 
     .mc-identity-main {
-      background: #fffaf3;
-      border: 1px solid #eee2d2;
       border-radius: 18px;
-      padding: 14px 16px;
+      padding: 12px 14px 10px;
+      min-width: 0;
     }
 
     .mc-name-row {
       display: flex;
       align-items: center;
-      gap: 8px;
-      margin-bottom: 6px;
+      gap: 7px;
+      margin-bottom: 4px;
     }
 
     .mc-member-name {
-      font-size: 28px;
+      min-width: 0;
+      font-size: 26px;
       font-weight: 800;
-      line-height: 1.2;
-      color: #2f2a25;
+      line-height: 1.15;
+      color: var(--text);
+      overflow-wrap: anywhere;
     }
 
     .mc-crown {
-      font-size: 22px;
+      font-size: 21px;
       line-height: 1;
+      flex-shrink: 0;
     }
 
     .mc-id-row {
       display: flex;
       align-items: baseline;
-      gap: 8px;
+      gap: 7px;
       flex-wrap: wrap;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .mc-id-label {
-      font-size: 14px;
+      font-size: 13px;
       color: #7a6f63;
+      font-weight: 700;
     }
 
     .mc-member-id {
       font-size: 18px;
       font-weight: 800;
-      color: #b3893d;
+      color: var(--gold);
       letter-spacing: 0.03em;
     }
 
     .mc-tier-mileage {
-      padding-top: 8px;
-      border-top: 1px dashed #e2d2bd;
-      font-size: 15px;
-      font-weight: 700;
+      padding-top: 6px;
+      border-top: 1px dashed #decbb0;
+      font-size: 14px;
+      font-weight: 800;
       color: #463d33;
-      line-height: 1.5;
+      line-height: 1.35;
     }
 
     .mc-badge-box {
-      background: #fffaf3;
-      border: 1px solid #eee2d2;
       border-radius: 18px;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 8px;
+      padding: 6px;
     }
 
     .mc-badge-image {
-      width: 74px;
-      height: 74px;
+      width: 70px;
+      height: 70px;
       object-fit: contain;
       mix-blend-mode: multiply;
     }
 
     .mc-qr-box {
-      background: #fffaf3;
-      border: 1px solid #eee2d2;
-      border-radius: 22px;
-      padding: 14px 14px 12px;
+      border-radius: 20px;
+      padding: 12px 12px 10px;
       text-align: center;
-      margin-bottom: 14px;
+      margin-bottom: 10px;
     }
 
     .mc-qrcode {
@@ -300,104 +344,114 @@
 
     #memberQrCode img,
     #memberQrCode canvas {
-      width: 150px !important;
-      height: 150px !important;
+      width: 138px !important;
+      height: 138px !important;
     }
 
     .mc-qr-tip {
-      margin-top: 10px;
-      font-size: 14px;
+      margin-top: 8px;
+      font-size: 13px;
       color: #6f6357;
-      line-height: 1.4;
+      line-height: 1.35;
     }
 
     .mc-stats-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 14px;
+      gap: 8px;
+      margin-bottom: 10px;
     }
 
     .mc-stat-card {
-      background: #fffaf3;
-      border: 1px solid #eee2d2;
       border-radius: 18px;
-      padding: 13px 14px 12px;
-      min-height: 102px;
+      padding: 11px 12px 10px;
+      min-height: 82px;
     }
 
     .mc-stat-label {
-      font-size: 15px;
-      font-weight: 700;
-      color: #6b5f54;
-      margin-bottom: 8px;
+      font-size: 14px;
+      font-weight: 800;
+      color: #625649;
+      margin-bottom: 7px;
     }
 
     .mc-stat-value {
-      font-size: 22px;
+      font-size: 21px;
       font-weight: 800;
-      color: #b3893d;
-      line-height: 1.2;
+      color: var(--gold);
+      line-height: 1.15;
     }
 
     .mc-stat-sub {
-      margin-top: 7px;
-      font-size: 12px;
+      margin-top: 5px;
+      font-size: 11px;
       color: #7c7166;
-      line-height: 1.45;
-      min-height: 18px;
+      line-height: 1.35;
+      min-height: 15px;
     }
 
     .mc-updated-row {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      background: #fffaf3;
-      border: 1px solid #eee2d2;
+      gap: 7px;
       border-radius: 999px;
-      padding: 11px 12px;
-      font-size: 14px;
+      padding: 9px 10px;
+      font-size: 13px;
       color: #6a6259;
-      margin-bottom: 14px;
+      margin-bottom: 10px;
     }
 
     .mc-updated-row strong {
-      color: #2f2a25;
+      color: var(--text);
     }
 
     .member-benefits-btn {
       width: 100%;
-      padding: 16px 18px;
+      padding: 13px 16px;
       border: none;
-      border-radius: 18px;
-      background: linear-gradient(90deg, #caa55a 0%, #e4c88c 100%);
+      border-radius: 17px;
+      background: linear-gradient(90deg, #c49a4d 0%, #e6ca8d 100%);
       color: #ffffff;
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 800;
       letter-spacing: 0.02em;
       cursor: pointer;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.36), 0 4px 10px rgba(116, 83, 43, 0.16);
+    }
+
+    @media (min-width: 500px) {
+      .page {
+        max-width: 460px;
+        padding-top: 14px;
+      }
     }
 
     @media (max-width: 380px) {
       .page {
-        padding: 14px 10px 30px;
+        padding: 8px 6px 14px;
       }
 
       .card {
-        padding: 14px;
+        padding: 8px;
+        border-radius: 20px;
       }
 
       .member-card {
-        padding: 10px;
+        padding: 6px;
       }
 
       .mc-identity-row {
-        grid-template-columns: 1fr 78px;
+        grid-template-columns: minmax(0, 1fr) 74px;
+        gap: 7px;
+      }
+
+      .mc-identity-main {
+        padding: 10px 12px 9px;
       }
 
       .mc-member-name {
-        font-size: 24px;
+        font-size: 23px;
       }
 
       .mc-member-id {
@@ -405,21 +459,32 @@
       }
 
       .mc-tier-mileage {
-        font-size: 13px;
+        font-size: 12px;
       }
 
       .mc-badge-image {
-        width: 66px;
-        height: 66px;
+        width: 62px;
+        height: 62px;
+      }
+
+      #memberQrCode img,
+      #memberQrCode canvas {
+        width: 130px !important;
+        height: 130px !important;
       }
 
       .mc-stat-card {
-        min-height: 98px;
-        padding: 12px;
+        min-height: 78px;
+        padding: 10px;
       }
 
       .mc-stat-value {
-        font-size: 20px;
+        font-size: 19px;
+      }
+
+      .member-benefits-btn {
+        padding: 12px 14px;
+        font-size: 16px;
       }
     }
   </style>
@@ -638,6 +703,7 @@
       loadingView.classList.add('hidden');
       memberView.classList.add('hidden');
       joinView.classList.add('hidden');
+      document.body.classList.toggle('member-mode', viewName === 'member');
 
       if (viewName === 'loading') loadingView.classList.remove('hidden');
       if (viewName === 'member') memberView.classList.remove('hidden');
@@ -753,8 +819,8 @@
 
       new QRCode(qrContainer, {
         text: memberId,
-        width: 150,
-        height: 150,
+        width: 138,
+        height: 138,
         correctLevel: QRCode.CorrectLevel.M
       });
     }
