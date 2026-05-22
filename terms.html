@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>MONDAY 會員條款與個人資料使用說明</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #ead8c1;
+      --paper: #fff8ee;
+      --paper-2: #fbf1e3;
+      --line: #e6d2b8;
+      --gold: #b88a3d;
+      --gold-2: #d9b86f;
+      --text: #2f2a25;
+      --muted: #72665a;
+      --soft: #f5e8d6;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      font-family: -apple-system, BlinkMacSystemFont, "Noto Sans TC", "PingFang TC", Arial, sans-serif;
+      background: linear-gradient(180deg, #ead8c1 0%, #f5e8d8 100%);
+      color: var(--text);
+    }
+
+    body {
+      padding: 14px 10px 28px;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .hero {
+      background: rgba(255, 248, 238, 0.88);
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      padding: 24px 20px;
+      box-shadow: 0 12px 28px rgba(92, 66, 35, 0.16);
+      text-align: center;
+      margin-bottom: 14px;
+    }
+
+    .brand {
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: 24px;
+      line-height: 1.35;
+      color: var(--text);
+    }
+
+    .hero p {
+      margin: 12px 0 0;
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    .notice {
+      background: #fffdf8;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 16px;
+      margin-bottom: 14px;
+      line-height: 1.8;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .notice strong {
+      color: var(--text);
+    }
+
+    .card {
+      background: rgba(255, 248, 238, 0.96);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: 0 8px 22px rgba(92, 66, 35, 0.1);
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 14px;
+      font-size: 19px;
+      line-height: 1.4;
+      color: var(--text);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #d9b86f 0%, #b98a3d 100%);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+
+    h3 {
+      margin: 16px 0 8px;
+      font-size: 16px;
+      color: #4b4035;
+    }
+
+    p,
+    li {
+      font-size: 14px;
+      line-height: 1.85;
+      color: var(--muted);
+    }
+
+    p {
+      margin: 8px 0;
+    }
+
+    ul,
+    ol {
+      margin: 8px 0 0;
+      padding-left: 22px;
+    }
+
+    li + li {
+      margin-top: 5px;
+    }
+
+    .highlight {
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 12px 14px;
+      margin-top: 10px;
+      color: #5d5044;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin-top: 10px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fffdf8;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 560px;
+    }
+
+    th,
+    td {
+      padding: 12px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    th {
+      width: 28%;
+      background: #f4e5cf;
+      color: #4c4035;
+      font-weight: 800;
+    }
+
+    tr:last-child th,
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 18px 8px 4px;
+      color: #7b6e61;
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .back-btn {
+      display: block;
+      width: 100%;
+      margin: 14px 0 0;
+      padding: 14px 18px;
+      border: none;
+      border-radius: 18px;
+      background: linear-gradient(90deg, #c49a4d 0%, #e6ca8d 100%);
+      color: #fff;
+      text-decoration: none;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 900;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.36), 0 4px 10px rgba(116, 83, 43, 0.16);
+    }
+
+    @media (max-width: 420px) {
+      body {
+        padding: 10px 8px 22px;
+      }
+
+      .hero {
+        padding: 22px 16px;
+        border-radius: 24px;
+      }
+
+      .brand {
+        font-size: 23px;
+      }
+
+      .hero h1 {
+        font-size: 22px;
+      }
+
+      .card {
+        padding: 16px;
+        border-radius: 20px;
+      }
+
+      h2 {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <section class="hero">
+      <div class="brand">MONDAY</div>
+      <h1>會員條款與個人資料使用說明</h1>
+      <p>加入 MONDAY 會員前，請先閱讀以下會員權益、點數里程規則與個人資料蒐集、處理及利用告知事項。</p>
+    </section>
+
+    <section class="notice">
+      <strong>重要提醒：</strong>當您勾選「我已閱讀並同意 MONDAY 會員條款與個人資料使用說明」並送出入會資料時，即表示您已閱讀、了解並同意本條款。本條款為 MONDAY 會員服務之使用規範，實際會員資料、餘額、點數、優惠券與到期日，以會員卡頁面及 MONDAY 系統紀錄為準。
+    </section>
+
+    <section class="card">
+      <h2><span class="badge">A</span>會員資格與服務內容</h2>
+      <ol>
+        <li>MONDAY 會員服務由 MONDAY 提供，供顧客建立會員資料、查詢行動會員卡、累積里程、使用點數、優惠券、生日禮及其他會員活動。</li>
+        <li>加入會員需提供必要資料並完成 LINE 帳號綁定。每一組 LINE 帳號原則上限綁定一個會員帳號。</li>
+        <li>會員資料若有不實、冒用、重複註冊、違反交易安全或其他不當使用情形，MONDAY 得暫停或終止會員資格，並保留調整或取消相關權益之權利。</li>
+        <li>會員卡僅供本人使用。若因會員自行提供、截圖、轉傳或揭露會員卡資訊而造成他人使用，相關風險由會員自行負擔。</li>
+      </ol>
+    </section>
+
+    <section class="card">
+      <h2><span class="badge">B</span>會員等級、里程與點數</h2>
+      <ol>
+        <li>加入會員即為 <strong>MONDAY Gold</strong>。</li>
+        <li>會員等級門檻暫定為：10,000 哩 MONDAY Platinum、35,000 哩 MONDAY Diamond、80,000 哩 MONDAY Black Diamond。</li>
+        <li>入會禮為 <strong>1,000 哩程</strong>及 <strong>100 點數</strong>，實際發放以 MONDAY 系統紀錄為準。</li>
+        <li>有效消費每新台幣 1 元可累積 1 里程；有效消費每新台幣 50 元可累積 10 點。未滿計算單位之部分，是否累計或進位，以 MONDAY 系統規則為準。</li>
+        <li>點數可依 MONDAY 公告或活動規則兌換消費禮金或指定好禮。每 1,000 點可兌換新台幣 100 元 MONDAY 禮金。</li>
+        <li>會員等級越高，未來點數兌換或指定活動所需扣點可能較優惠；實際適用內容以活動公告或會員卡頁面顯示為準。</li>
+      </ol>
+      <div class="highlight">禮遇回饋金、點數禮金、優惠券折抵、運費、特殊折扣或其他 MONDAY 公告排除項目，不列入有效消費，亦不重複累積點數與里程。</div>
+    </section>
+
+    <section class="card">
+      <h2><span class="badge">C</span>優惠券、生日禮與可用餘額</h2>
+      <ol>
+        <li>優惠券、生日禮、活動贈品或其他會員禮遇，將依會員資格、活動條件、系統設定及 MONDAY 公告發送。</li>
+        <li>優惠券與生日禮可能設有使用期限、使用門檻、指定商品、指定通路或不得與其他優惠併用等限制。</li>
+        <li>會員應自行留意會員卡內顯示之券數、點數、餘額及使用期限。逾期未使用者，恕不補發或折換現金。</li>
+        <li>可用餘額包含儲值本金、禮遇回饋金、點數禮金或其他 MONDAY 認定之可用金額。不同餘額來源可能適用不同使用規則。</li>
+        <li>使用儲值本金、禮金、回饋金、點數禮金或優惠券消費時，該折抵部分不重複累積點數與里程。</li>
+        <li>如發生退貨、取消交易、交易錯誤、系統異常或人工補登調整，MONDAY 得依實際交易狀況修正點數、里程、餘額與優惠券紀錄。</li>
+      </ol>
+    </section>
+
+    <section class="card">
+      <h2><span class="badge">D</span>個人資料蒐集、處理及利用告知</h2>
+      <p>MONDAY 為提供會員服務、會員管理、點數里程、優惠券、生日禮、活動通知、交易紀錄管理、顧客服務及相關品牌服務，將依本說明蒐集、處理及利用您的個人資料。</p>
+
+      <div class="table-wrap">
+        <table>
+          <tbody>
+            <tr>
+              <th>蒐集單位</th>
+              <td>MONDAY（實際商號、公司或負責人資訊請依正式營業資料補入）</td>
+            </tr>
+            <tr>
+              <th>蒐集目的</th>
+              <td>會員建檔與身分識別、LINE 帳號綁定、會員卡顯示、點數里程與優惠券管理、生日禮與活動通知、消費紀錄與人工補登、顧客服務、系統維護、統計分析及行銷服務。</td>
+            </tr>
+            <tr>
+              <th>個人資料類別</th>
+              <td>姓名或暱稱、手機號碼、生日、LINE User ID、LINE 顯示名稱、會員ID、會員等級、入會日期、點數、里程、餘額、優惠券、推薦人ID、小孩生日、關注尺寸、交易與會員服務紀錄，以及您主動提供之其他資料。</td>
+            </tr>
+            <tr>
+              <th>利用期間</th>
+              <td>會員資格存續期間、服務提供期間、依法令或會計保存期間、爭議處理期間，或蒐集目的完成後之合理必要期間。</td>
+            </tr>
+            <tr>
+              <th>利用地區</th>
+              <td>台灣地區；如使用 Google、LINE、GitHub Pages 或其他雲端服務，資料可能依該服務之系統架構於境內外伺服器處理或儲存。</td>
+            </tr>
+            <tr>
+              <th>利用對象</th>
+              <td>MONDAY、MONDAY 授權處理會員服務之人員、系統服務供應商、金流或物流相關服務商、LINE 平台、Google 服務、GitHub Pages，及依法令得請求提供之機關。</td>
+            </tr>
+            <tr>
+              <th>利用方式</th>
+              <td>以紙本、電子檔、試算表、會員系統、LINE LIFF、訊息通知、人工補登、查詢、更新、統計、分析、客服聯繫及活動通知等方式處理及利用。</td>
+            </tr>
+            <tr>
+              <th>不提供資料之影響</th>
+              <td>您可自由選擇是否提供個人資料。若未提供必要資料，可能無法完成入會、建立會員卡、累積點數里程、取得生日禮、使用優惠券或享有相關會員服務。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2><span class="badge">E</span>會員資料權利與退出方式</h2>
+      <ol>
+        <li>會員得向 MONDAY 請求查詢或閱覽、製給複製本、補充或更正、停止蒐集處理利用、刪除個人資料。</li>
+        <li>若您希望修改會員資料、停止接收活動通知、解除 LINE 綁定或退出會員，可透過 MONDAY 官方 LINE 或現場服務人員提出申請。</li>
+        <li>MONDAY 受理後，將於合理期間內確認身分並處理。惟依法令規定、交易紀錄保存、爭議處理、會計稅務或系統備份需求，部分資料可能無法立即刪除。</li>
+        <li>會員退出後，尚未使用之點數、里程、優惠券、生日禮或其他會員權益，除 MONDAY 另有公告或法令另有規定外，視為放棄且不折換現金。</li>
+      </ol>
+    </section>
+
+    <section class="card">
+      <h2><span class="badge">F</span>條款修改與其他事項</h2>
+      <ol>
+        <li>MONDAY 得因服務調整、活動規則、法令變更或營運需要，修改會員條款、點數里程規則、優惠券規則與個人資料使用說明。</li>
+        <li>條款修改後，將以會員頁面、官方 LINE、社群公告、現場公告或其他適當方式揭露。會員於公告後繼續使用會員服務，視為同意更新後內容。</li>
+        <li>本條款如有未盡事項，依 MONDAY 相關公告、活動規則及中華民國法令辦理。</li>
+        <li>如對本條款或個人資料使用有任何問題，請透過 MONDAY 官方 LINE 聯繫。</li>
+      </ol>
+    </section>
+
+    <a class="back-btn" href="./index.html">返回會員頁</a>
+
+    <div class="footer">
+      MONDAY 會員條款與個人資料使用說明<br />
+      版本日期：2026/05/23<br />
+      本頁內容為會員服務告知用途，正式營業資訊與聯絡窗口請依 MONDAY 實際公告補充。
+    </div>
+  </main>
+</body>
+</html>
