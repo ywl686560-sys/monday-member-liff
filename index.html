@@ -21,13 +21,13 @@
     .page {
       max-width: 430px;
       margin: 0 auto;
-      padding: 24px 16px 40px;
+      padding: 18px 14px 36px;
     }
 
     .card {
       background: #ffffff;
       border-radius: 24px;
-      padding: 22px;
+      padding: 18px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     }
 
@@ -172,11 +172,6 @@
       cursor: pointer;
     }
 
-    .button.secondary {
-      background: #e9dfd2;
-      color: #2f2a25;
-    }
-
     .button:disabled {
       opacity: 0.55;
       cursor: not-allowed;
@@ -191,109 +186,241 @@
 
     .member-card {
       background: #ffffff;
-      border-radius: 24px;
-      padding: 20px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      border-radius: 26px;
+      padding: 14px;
     }
 
-    .member-card-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      margin-bottom: 18px;
+    .mc-hero {
+      overflow: hidden;
+      border-radius: 22px;
+      background: #f8f4ee;
+      border: 1px solid #eee2d2;
+      margin-bottom: 14px;
     }
 
-    .member-logo {
-      width: 180px;
-      max-width: 62%;
+    .mc-hero-image {
+      display: block;
+      width: 100%;
       height: auto;
-      object-fit: contain;
     }
 
-    .member-character {
-      width: 92px;
-      height: auto;
-      object-fit: contain;
-      flex-shrink: 0;
-    }
-
-    .member-identity-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 16px;
-      margin-bottom: 18px;
-      border-radius: 18px;
-      background: #f6f1ea;
-    }
-
-    .member-name {
-      font-size: 20px;
-      font-weight: 800;
-      margin-bottom: 4px;
-    }
-
-    .member-id {
-      font-size: 14px;
-      color: #6a6259;
-    }
-
-    .member-badge {
-      width: 64px;
-      height: 64px;
-      object-fit: contain;
-      flex-shrink: 0;
-    }
-
-    .member-card-body {
+    .mc-identity-row {
       display: grid;
-      gap: 18px;
+      grid-template-columns: 1fr 88px;
+      gap: 12px;
+      align-items: stretch;
+      margin-bottom: 14px;
     }
 
-    .member-qrcode {
+    .mc-identity-main {
+      background: #fffaf3;
+      border: 1px solid #eee2d2;
+      border-radius: 18px;
+      padding: 14px 16px;
+    }
+
+    .mc-name-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .mc-member-name {
+      font-size: 28px;
+      font-weight: 800;
+      line-height: 1.2;
+      color: #2f2a25;
+    }
+
+    .mc-crown {
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    .mc-id-row {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+
+    .mc-id-label {
+      font-size: 14px;
+      color: #7a6f63;
+    }
+
+    .mc-member-id {
+      font-size: 18px;
+      font-weight: 800;
+      color: #b3893d;
+      letter-spacing: 0.03em;
+    }
+
+    .mc-tier-mileage {
+      padding-top: 8px;
+      border-top: 1px dashed #e2d2bd;
+      font-size: 15px;
+      font-weight: 700;
+      color: #463d33;
+      line-height: 1.5;
+    }
+
+    .mc-badge-box {
+      background: #fffaf3;
+      border: 1px solid #eee2d2;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+    }
+
+    .mc-badge-image {
+      width: 74px;
+      height: 74px;
+      object-fit: contain;
+      mix-blend-mode: multiply;
+    }
+
+    .mc-qr-box {
+      background: #fffaf3;
+      border: 1px solid #eee2d2;
+      border-radius: 22px;
+      padding: 14px 14px 12px;
+      text-align: center;
+      margin-bottom: 14px;
+    }
+
+    .mc-qrcode {
       display: flex;
       justify-content: center;
-      padding: 16px;
-      border-radius: 18px;
-      background: #f7f7f7;
     }
 
-    .member-info-list {
+    #memberQrCode img,
+    #memberQrCode canvas {
+      width: 150px !important;
+      height: 150px !important;
+    }
+
+    .mc-qr-tip {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #6f6357;
+      line-height: 1.4;
+    }
+
+    .mc-stats-grid {
       display: grid;
+      grid-template-columns: 1fr 1fr;
       gap: 12px;
+      margin-bottom: 14px;
     }
 
-    .member-info-list div {
+    .mc-stat-card {
+      background: #fffaf3;
+      border: 1px solid #eee2d2;
+      border-radius: 18px;
+      padding: 13px 14px 12px;
+      min-height: 102px;
+    }
+
+    .mc-stat-label {
+      font-size: 15px;
+      font-weight: 700;
+      color: #6b5f54;
+      margin-bottom: 8px;
+    }
+
+    .mc-stat-value {
+      font-size: 22px;
+      font-weight: 800;
+      color: #b3893d;
+      line-height: 1.2;
+    }
+
+    .mc-stat-sub {
+      margin-top: 7px;
+      font-size: 12px;
+      color: #7c7166;
+      line-height: 1.45;
+      min-height: 18px;
+    }
+
+    .mc-updated-row {
       display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid #eeeeee;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #fffaf3;
+      border: 1px solid #eee2d2;
+      border-radius: 999px;
+      padding: 11px 12px;
+      font-size: 14px;
+      color: #6a6259;
+      margin-bottom: 14px;
     }
 
-    .member-info-list span {
-      color: #777;
-      font-size: 14px;
-    }
-
-    .member-info-list strong {
-      text-align: right;
-      font-size: 14px;
+    .mc-updated-row strong {
+      color: #2f2a25;
     }
 
     .member-benefits-btn {
       width: 100%;
-      margin-top: 20px;
-      padding: 14px 16px;
+      padding: 16px 18px;
       border: none;
-      border-radius: 999px;
-      background: #e9dfd2;
-      color: #2f2a25;
-      font-size: 15px;
+      border-radius: 18px;
+      background: linear-gradient(90deg, #caa55a 0%, #e4c88c 100%);
+      color: #ffffff;
+      font-size: 18px;
       font-weight: 800;
+      letter-spacing: 0.02em;
       cursor: pointer;
+    }
+
+    @media (max-width: 380px) {
+      .page {
+        padding: 14px 10px 30px;
+      }
+
+      .card {
+        padding: 14px;
+      }
+
+      .member-card {
+        padding: 10px;
+      }
+
+      .mc-identity-row {
+        grid-template-columns: 1fr 78px;
+      }
+
+      .mc-member-name {
+        font-size: 24px;
+      }
+
+      .mc-member-id {
+        font-size: 16px;
+      }
+
+      .mc-tier-mileage {
+        font-size: 13px;
+      }
+
+      .mc-badge-image {
+        width: 66px;
+        height: 66px;
+      }
+
+      .mc-stat-card {
+        min-height: 98px;
+        padding: 12px;
+      }
+
+      .mc-stat-value {
+        font-size: 20px;
+      }
     }
   </style>
 </head>
@@ -390,76 +517,86 @@
         </form>
       </div>
 
-      <section id="memberCardSection" class="hidden">
-        <div class="member-card">
-          <div class="member-card-header">
-            <img
-              src="./assets/monday-logo-horizontal.png"
-              alt="MONDAY Logo"
-              class="member-logo"
-            />
-
-            <img
-              src="./assets/member-card-character.png"
-              alt="MONDAY Member Character"
-              class="member-character"
-            />
-          </div>
-
-          <div class="member-identity-row">
-            <div>
-              <div id="cardMemberName" class="member-name">MONDAY 會員</div>
-              <div id="cardMemberId" class="member-id">會員ID</div>
+      <div id="memberView" class="hidden">
+        <section class="member-card-section">
+          <div class="member-card">
+            <div class="mc-hero">
+              <img
+                src="./assets/member-card-hero.png"
+                alt="MONDAY Member Club"
+                class="mc-hero-image"
+              />
             </div>
 
-            <img
-              src="./assets/badge-gold.png"
-              alt="MONDAY Gold Badge"
-              class="member-badge"
-            />
-          </div>
+            <div class="mc-identity-row">
+              <div class="mc-identity-main">
+                <div class="mc-name-row">
+                  <div id="cardMemberName" class="mc-member-name">MONDAY 會員</div>
+                  <div class="mc-crown">👑</div>
+                </div>
 
-          <div class="member-card-body">
-            <div id="memberQrCode" class="member-qrcode"></div>
+                <div class="mc-id-row">
+                  <span class="mc-id-label">會員ID</span>
+                  <span id="cardMemberId" class="mc-member-id">M26001</span>
+                </div>
 
-            <div class="member-info-list">
-              <div>
-                <span>會員等級</span>
-                <strong id="cardTierMileage">MONDAY Gold｜累積里程 1,000</strong>
+                <div id="cardTierMileage" class="mc-tier-mileage">
+                  MONDAY Gold｜累積里程 1,000
+                </div>
               </div>
 
-              <div>
-                <span>可用餘額</span>
-                <strong id="cardBalance">$0</strong>
-              </div>
-
-              <div>
-                <span>可用點數</span>
-                <strong id="cardPoints">100 點</strong>
-              </div>
-
-              <div>
-                <span>優惠券</span>
-                <strong id="cardCoupons">0 張</strong>
-              </div>
-
-              <div>
-                <span>最近到期提醒</span>
-                <strong id="cardExpireNotice">目前沒有即將到期提醒</strong>
-              </div>
-
-              <div>
-                <span>最近更新時間</span>
-                <strong id="cardUpdatedAt">-</strong>
+              <div class="mc-badge-box">
+                <img
+                  id="cardBadge"
+                  src="./assets/badge-gold.png"
+                  alt="會員等級徽章"
+                  class="mc-badge-image"
+                />
               </div>
             </div>
-          </div>
 
-          <button id="memberBenefitsBtn" class="member-benefits-btn" type="button">
-            查看會員權益說明
-          </button>
-        </div>
-      </section>
+            <div class="mc-qr-box">
+              <div id="memberQrCode" class="mc-qrcode"></div>
+              <div class="mc-qr-tip">出示此 QR Code 供店員掃描</div>
+            </div>
+
+            <div class="mc-stats-grid">
+              <div class="mc-stat-card">
+                <div class="mc-stat-label">可用餘額</div>
+                <div id="cardBalance" class="mc-stat-value">$0</div>
+                <div class="mc-stat-sub"></div>
+              </div>
+
+              <div class="mc-stat-card">
+                <div class="mc-stat-label">可用禮金</div>
+                <div id="cardGift" class="mc-stat-value">$0</div>
+                <div class="mc-stat-sub"></div>
+              </div>
+
+              <div class="mc-stat-card">
+                <div class="mc-stat-label">可用點數</div>
+                <div id="cardPoints" class="mc-stat-value">100 點</div>
+                <div id="cardPointsNote" class="mc-stat-sub">目前沒有到期提醒</div>
+              </div>
+
+              <div class="mc-stat-card">
+                <div class="mc-stat-label">優惠券</div>
+                <div id="cardCoupons" class="mc-stat-value">0 張</div>
+                <div id="cardCouponsNote" class="mc-stat-sub">目前沒有即將到期提醒</div>
+              </div>
+            </div>
+
+            <div class="mc-updated-row">
+              <span>🕒</span>
+              <span>資料更新時間：<strong id="cardUpdatedAt">-</strong></span>
+            </div>
+
+            <button id="memberBenefitsBtn" class="member-benefits-btn" type="button">
+              👑 會員權益說明
+            </button>
+          </div>
+        </section>
+      </div>
     </div>
   </div>
 
@@ -474,8 +611,8 @@
     let isSubmitting = false;
 
     const loadingView = document.getElementById('loadingView');
+    const memberView = document.getElementById('memberView');
     const joinView = document.getElementById('joinView');
-    const memberCardSection = document.getElementById('memberCardSection');
     const statusEl = document.getElementById('status');
     const formStatus = document.getElementById('formStatus');
     const submitButton = document.getElementById('submitButton');
@@ -499,12 +636,12 @@
 
     function showView(viewName) {
       loadingView.classList.add('hidden');
+      memberView.classList.add('hidden');
       joinView.classList.add('hidden');
-      memberCardSection.classList.add('hidden');
 
       if (viewName === 'loading') loadingView.classList.remove('hidden');
+      if (viewName === 'member') memberView.classList.remove('hidden');
       if (viewName === 'join') joinView.classList.remove('hidden');
-      if (viewName === 'memberCard') memberCardSection.classList.remove('hidden');
     }
 
     function formatNumber(value) {
@@ -548,7 +685,20 @@
       renderMemberCard(result.card);
     }
 
+    function getBadgeImageByTier(memberTier) {
+      const tier = String(memberTier || '').toLowerCase();
+
+      if (tier.includes('silver')) return './assets/badge-gold.png';
+      if (tier.includes('gold')) return './assets/badge-gold.png';
+      if (tier.includes('platinum')) return './assets/badge-platinum.png';
+      if (tier.includes('diamond')) return './assets/badge-diamond.png';
+
+      return './assets/badge-gold.png';
+    }
+
     function renderMemberCard(card) {
+      const memberTier = card.memberTier || 'MONDAY Gold';
+
       document.getElementById('cardMemberName').textContent =
         card.name || 'MONDAY 會員';
 
@@ -556,26 +706,43 @@
         card.memberId || '-';
 
       document.getElementById('cardTierMileage').textContent =
-        `${card.memberTier || 'MONDAY Gold'}｜累積里程 ${formatNumber(card.mileage || 0)}`;
+        `${memberTier}｜累積里程 ${formatNumber(card.mileage || 0)}`;
 
       document.getElementById('cardBalance').textContent =
         `$${formatNumber(card.availableBalance || 0)}`;
 
+      document.getElementById('cardGift').textContent =
+        `$${formatNumber(
+          card.availableGift ||
+          card.availableRewardMoney ||
+          card.availableBonus ||
+          card.rewardBalance ||
+          0
+        )}`;
+
       document.getElementById('cardPoints').textContent =
-        `${formatNumber(card.availablePoints || 0)} 點` +
-        (card.pointsExpireAt ? `｜${card.pointsExpireAt} 到期` : '');
+        `${formatNumber(card.availablePoints || 0)} 點`;
+
+      document.getElementById('cardPointsNote').textContent =
+        card.pointsExpireAt
+          ? `最晚失效日 ${card.pointsExpireAt}`
+          : '目前沒有到期提醒';
 
       document.getElementById('cardCoupons').textContent =
         `${formatNumber(card.availableCoupons || 0)} 張`;
 
-      document.getElementById('cardExpireNotice').textContent =
+      document.getElementById('cardCouponsNote').textContent =
         card.recentExpireNotice || '目前沒有即將到期提醒';
 
       document.getElementById('cardUpdatedAt').textContent =
         card.lastUpdatedAt || '-';
 
+      const badgeEl = document.getElementById('cardBadge');
+      badgeEl.src = getBadgeImageByTier(memberTier);
+      badgeEl.alt = `${memberTier} Badge`;
+
       renderMemberQrCode(card.memberId);
-      showView('memberCard');
+      showView('member');
     }
 
     function renderMemberQrCode(memberId) {
@@ -586,8 +753,8 @@
 
       new QRCode(qrContainer, {
         text: memberId,
-        width: 160,
-        height: 160,
+        width: 150,
+        height: 150,
         correctLevel: QRCode.CorrectLevel.M
       });
     }
@@ -597,8 +764,17 @@
 
       if (!btn) return;
 
+      const benefitsUrl = new URL('./assets/member-benefits.png', window.location.href).href;
+
       btn.addEventListener('click', function () {
-        window.location.href = './assets/member-benefits.png';
+        if (typeof liff !== 'undefined' && liff.openWindow) {
+          liff.openWindow({
+            url: benefitsUrl,
+            external: true
+          });
+        } else {
+          window.open(benefitsUrl, '_blank');
+        }
       });
     }
 
