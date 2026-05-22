@@ -33,7 +33,8 @@
       color: var(--text);
     }
 
-    body.member-mode {
+    body.member-mode,
+    body.join-mode {
       background: linear-gradient(180deg, #ead8c1 0%, #f3e7d8 100%);
     }
 
@@ -60,7 +61,8 @@
       margin: 2px 4px 12px;
     }
 
-    body.member-mode .logo {
+    body.member-mode .logo,
+    body.join-mode .logo {
       display: none;
     }
 
@@ -103,18 +105,19 @@
     }
 
     .form {
-      margin-top: 18px;
+      margin-top: 0;
     }
 
     .form-group {
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     label {
       display: block;
       font-size: 14px;
-      font-weight: 700;
+      font-weight: 800;
       margin-bottom: 7px;
+      color: #4d4237;
     }
 
     .required {
@@ -127,17 +130,19 @@
     select {
       width: 100%;
       padding: 13px 14px;
-      border: 1px solid #ddd2c5;
+      border: 1px solid var(--line);
       border-radius: 14px;
       font-size: 15px;
-      background: #fff;
+      background: #fffdf8;
       color: var(--text);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.68);
     }
 
     input:focus,
     select:focus {
       outline: none;
-      border-color: var(--text);
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(184, 138, 61, 0.12);
     }
 
     .hint {
@@ -156,33 +161,45 @@
     .checkbox-item {
       display: flex;
       align-items: center;
-      gap: 8px;
-      padding: 10px;
-      border: 1px solid #ddd2c5;
-      border-radius: 12px;
-      background: #fff;
+      justify-content: center;
+      gap: 7px;
+      padding: 10px 8px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fffdf8;
       font-size: 13px;
-      font-weight: 500;
+      font-weight: 800;
+      color: #51463b;
     }
 
     .checkbox-item input {
       width: auto;
+      accent-color: var(--gold);
     }
 
     .terms-row {
       display: flex;
       gap: 8px;
       align-items: flex-start;
-      padding: 12px;
-      background: #f6f1ea;
-      border-radius: 14px;
+      padding: 0;
+      background: transparent;
+      border-radius: 0;
       font-size: 13px;
       line-height: 1.6;
+      color: var(--muted);
     }
 
     .terms-row input {
       width: auto;
       margin-top: 4px;
+      accent-color: var(--gold);
+    }
+
+    .terms-row a {
+      color: var(--gold);
+      font-weight: 900;
+      text-decoration: underline;
+      text-underline-offset: 3px;
     }
 
     .button {
@@ -198,7 +215,8 @@
       cursor: pointer;
     }
 
-    .button:disabled {
+    .button:disabled,
+    .join-submit-button:disabled {
       opacity: 0.55;
       cursor: not-allowed;
     }
@@ -208,6 +226,154 @@
       margin-bottom: 10px;
       font-size: 16px;
       font-weight: 800;
+    }
+
+    .join-card {
+      width: 100%;
+      max-width: 430px;
+      margin: 0 auto;
+      background: var(--tea-page);
+      border-radius: 20px;
+      padding: 8px;
+    }
+
+    .join-hero {
+      overflow: hidden;
+      border-radius: 20px;
+      background: var(--cream);
+      border: 1px solid var(--line);
+      margin-bottom: 10px;
+      box-shadow: 0 4px 12px rgba(116, 83, 43, 0.08);
+    }
+
+    .join-hero-image {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+
+    .join-intro,
+    .join-section,
+    .join-terms {
+      background: var(--cream-2);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: 0 2px 8px rgba(116, 83, 43, 0.06);
+    }
+
+    .join-intro {
+      padding: 15px 15px 13px;
+      margin-bottom: 10px;
+    }
+
+    .join-title {
+      margin: 0 0 8px;
+      font-size: 24px;
+      font-weight: 900;
+      line-height: 1.25;
+      color: var(--text);
+    }
+
+    .join-subtitle {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+
+    .join-bonus-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .join-bonus {
+      background: #fff8ee;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 10px 8px;
+      text-align: center;
+    }
+
+    .join-bonus-label {
+      display: block;
+      font-size: 12px;
+      color: #73675b;
+      margin-bottom: 4px;
+      font-weight: 800;
+    }
+
+    .join-bonus-value {
+      display: block;
+      font-size: 18px;
+      color: var(--gold);
+      font-weight: 900;
+      line-height: 1.2;
+    }
+
+    .join-section {
+      padding: 13px;
+      margin-bottom: 10px;
+    }
+
+    .join-section-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      font-size: 16px;
+      font-weight: 900;
+      color: #4a4035;
+    }
+
+    .join-section-mark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #d9b86f 0%, #b88a3d 100%);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+
+    .join-section .form-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .join-size-grid {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .join-terms {
+      padding: 13px 14px;
+      margin-bottom: 10px;
+    }
+
+    .join-submit-button {
+      width: 100%;
+      margin-top: 0;
+      padding: 15px 18px;
+      border: none;
+      border-radius: 18px;
+      background: linear-gradient(90deg, #c49a4d 0%, #e6ca8d 100%);
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: 0.02em;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.36), 0 4px 10px rgba(116, 83, 43, 0.16);
+      cursor: pointer;
+    }
+
+    .join-form-status {
+      margin-top: 12px;
+      background: #fff8ee;
+      border: 1px solid var(--line);
     }
 
     .member-card-section {
@@ -437,8 +603,21 @@
         border-radius: 20px;
       }
 
+      .join-card,
       .member-card {
         padding: 6px;
+      }
+
+      .join-title {
+        font-size: 22px;
+      }
+
+      .join-bonus-value {
+        font-size: 16px;
+      }
+
+      .join-size-grid {
+        grid-template-columns: 1fr 1fr;
       }
 
       .mc-identity-row {
@@ -502,84 +681,131 @@
       </div>
 
       <div id="joinView" class="hidden">
-        <div class="title">首次入會</div>
-        <div class="subtitle">
-          歡迎加入 MONDAY 會員。請填寫以下資料，完成後即可建立行動會員卡。
-        </div>
-
-        <form id="joinForm" class="form">
-          <div class="form-group">
-            <label>姓名 / 暱稱 <span class="required">必填</span></label>
-            <input id="displayName" type="text" placeholder="請輸入姓名或暱稱" />
+        <section class="join-card">
+          <div class="join-hero">
+            <img
+              src="./assets/join-hero.png"
+              alt="MONDAY Member Club"
+              class="join-hero-image"
+            />
           </div>
 
-          <div class="form-group">
-            <label>手機號碼 <span class="required">必填</span></label>
-            <input id="phone" type="tel" placeholder="請輸入手機號碼" />
-          </div>
+          <div class="join-intro">
+            <h1 class="join-title">歡迎加入 MONDAY 會員</h1>
+            <p class="join-subtitle">
+              完成入會即可建立行動會員卡，享有點數、里程、優惠券與生日禮等會員服務。
+            </p>
 
-          <div class="form-group">
-            <label>生日 <span class="required">必填</span></label>
-            <input id="birthday" type="date" />
-            <div class="hint">生日禮將依生日月份發送。</div>
-          </div>
+            <div class="join-bonus-row">
+              <div class="join-bonus">
+                <span class="join-bonus-label">入會即贈</span>
+                <span class="join-bonus-value">1,000 哩程</span>
+              </div>
 
-          <div class="section-title">小孩生日</div>
-
-          <div class="form-group">
-            <label>小孩生日 1</label>
-            <input id="childBirthday1" type="date" />
-          </div>
-
-          <div class="form-group">
-            <label>小孩生日 2</label>
-            <input id="childBirthday2" type="date" />
-          </div>
-
-          <div class="form-group">
-            <label>小孩生日 3</label>
-            <input id="childBirthday3" type="date" />
-          </div>
-
-          <div class="section-title">關注尺寸</div>
-
-          <div class="checkbox-grid">
-            <label class="checkbox-item"><input type="checkbox" name="sizeInterest" value="80–90" />80–90</label>
-            <label class="checkbox-item"><input type="checkbox" name="sizeInterest" value="90–100" />90–100</label>
-            <label class="checkbox-item"><input type="checkbox" name="sizeInterest" value="100–110" />100–110</label>
-            <label class="checkbox-item"><input type="checkbox" name="sizeInterest" value="110–120" />110–120</label>
-            <label class="checkbox-item"><input type="checkbox" name="sizeInterest" value="120–130" />120–130</label>
-            <label class="checkbox-item"><input type="checkbox" name="sizeInterest" value="130–140" />130–140</label>
-            <label class="checkbox-item"><input type="checkbox" name="sizeInterest" value="140–150" />140–150</label>
-            <label class="checkbox-item"><input type="checkbox" name="sizeInterest" value="150–160" />150–160</label>
-            <label class="checkbox-item"><input type="checkbox" name="sizeInterest" value="暫不填寫" />暫不填寫</label>
-          </div>
-
-          <div class="section-title">推薦人</div>
-
-          <div class="form-group">
-            <label>推薦人ID</label>
-            <input id="referrerId" type="text" placeholder="若無推薦人可留空" />
-            <div class="hint">若沒有推薦人，系統會記錄為「無推薦人」。</div>
-          </div>
-
-          <div class="form-group">
-            <div class="terms-row">
-              <input id="termsAgreed" type="checkbox" />
-              <div>
-                我已閱讀並同意 MONDAY 會員條款與個資使用說明。
+              <div class="join-bonus">
+                <span class="join-bonus-label">入會即贈</span>
+                <span class="join-bonus-value">100 點數</span>
               </div>
             </div>
           </div>
 
-          <button id="submitButton" class="button" type="button">
-            加入 MONDAY 會員
-          </button>
+          <form id="joinForm" class="form">
+            <section class="join-section">
+              <div class="join-section-title">
+                <span class="join-section-mark">A</span>
+                <span>基本資料</span>
+              </div>
 
-          <div id="formStatus" class="status">
-            請確認資料正確後送出。
-          </div>
-        </form>
+              <div class="form-group">
+                <label>姓名 / 暱稱 <span class="required">必填</span></label>
+                <input id="displayName" type="text" placeholder="請輸入姓名或暱稱" />
+              </div>
+
+              <div class="form-group">
+                <label>手機號碼 <span class="required">必填</span></label>
+                <input id="phone" type="tel" placeholder="請輸入手機號碼" />
+              </div>
+
+              <div class="form-group">
+                <label>生日 <span class="required">必填</span></label>
+                <input id="birthday" type="date" />
+                <div class="hint">生日禮將依生日月份發送。</div>
+              </div>
+            </section>
+
+            <section class="join-section">
+              <div class="join-section-title">
+                <span class="join-section-mark">B</span>
+                <span>寶貝資料</span>
+              </div>
+
+              <div class="form-group">
+                <label>小孩生日 1</label>
+                <input id="childBirthday1" type="date" />
+              </div>
+
+              <div class="form-group">
+                <label>小孩生日 2</label>
+                <input id="childBirthday2" type="date" />
+              </div>
+
+              <div class="form-group">
+                <label>小孩生日 3</label>
+                <input id="childBirthday3" type="date" />
+              </div>
+            </section>
+
+            <section class="join-section">
+              <div class="join-section-title">
+                <span class="join-section-mark">C</span>
+                <span>關注尺寸</span>
+              </div>
+
+              <div class="checkbox-grid join-size-grid">
+                <label class="checkbox-item"><input type="checkbox" name="sizeInterest" value="80–90" />80–90</label>
+                <label class="checkbox-item"><input type="checkbox" name="sizeInterest" value="90–100" />90–100</label>
+                <label class="checkbox-item"><input type="checkbox" name="sizeInterest" value="100–110" />100–110</label>
+                <label class="checkbox-item"><input type="checkbox" name="sizeInterest" value="110–120" />110–120</label>
+                <label class="checkbox-item"><input type="checkbox" name="sizeInterest" value="120–130" />120–130</label>
+                <label class="checkbox-item"><input type="checkbox" name="sizeInterest" value="130–140" />130–140</label>
+                <label class="checkbox-item"><input type="checkbox" name="sizeInterest" value="140–150" />140–150</label>
+                <label class="checkbox-item"><input type="checkbox" name="sizeInterest" value="150–160" />150–160</label>
+                <label class="checkbox-item"><input type="checkbox" name="sizeInterest" value="暫不填寫" />暫不填寫</label>
+              </div>
+            </section>
+
+            <section class="join-section">
+              <div class="join-section-title">
+                <span class="join-section-mark">D</span>
+                <span>推薦人資訊</span>
+              </div>
+
+              <div class="form-group">
+                <label>推薦人ID</label>
+                <input id="referrerId" type="text" placeholder="若無推薦人可留空" />
+                <div class="hint">若沒有推薦人，系統會記錄為「無推薦人」。</div>
+              </div>
+            </section>
+
+            <section class="join-terms">
+              <div class="terms-row">
+                <input id="termsAgreed" type="checkbox" />
+                <div>
+                  我已閱讀並同意
+                  <a href="./terms.html" target="_blank" rel="noopener">MONDAY 會員條款與個人資料使用說明</a>
+                </div>
+              </div>
+            </section>
+
+            <button id="submitButton" class="join-submit-button" type="button">
+              加入 MONDAY 會員
+            </button>
+
+            <div id="formStatus" class="status join-form-status">
+              請確認資料正確後送出。
+            </div>
+          </form>
+        </section>
       </div>
 
       <div id="memberView" class="hidden">
@@ -704,6 +930,7 @@
       memberView.classList.add('hidden');
       joinView.classList.add('hidden');
       document.body.classList.toggle('member-mode', viewName === 'member');
+      document.body.classList.toggle('join-mode', viewName === 'join');
 
       if (viewName === 'loading') loadingView.classList.remove('hidden');
       if (viewName === 'member') memberView.classList.remove('hidden');
