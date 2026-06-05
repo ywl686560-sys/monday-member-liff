@@ -853,9 +853,9 @@
 
             <div class="mc-stats-grid">
               <div class="mc-stat-card">
-                <div class="mc-stat-label">可用餘額</div>
+                <div class="mc-stat-label">MONDAY 可用餘額</div>
                 <div id="cardBalance" class="mc-stat-value">$0</div>
-                <div class="mc-stat-sub"></div>
+                <div class="mc-stat-sub">含儲值本金與禮遇金</div>
               </div>
 
               <div class="mc-stat-card">
@@ -1005,13 +1005,7 @@
         `$${formatNumber(card.availableBalance || 0)}`;
 
       document.getElementById('cardGift').textContent =
-        `$${formatNumber(
-          card.availableGift ||
-          card.availableRewardMoney ||
-          card.availableBonus ||
-          card.rewardBalance ||
-          0
-        )}`;
+        `$${formatNumber(card.pointGiftBalance || 0)}`;
 
       document.getElementById('cardPoints').textContent =
         `${formatNumber(card.availablePoints || 0)} 點`;
