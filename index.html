@@ -855,7 +855,6 @@
               <div class="mc-stat-card">
                 <div class="mc-stat-label">MONDAY 可用餘額</div>
                 <div id="cardBalance" class="mc-stat-value">$0</div>
-                <div class="mc-stat-sub">含儲值本金與禮遇金</div>
               </div>
 
               <div class="mc-stat-card">
@@ -867,7 +866,7 @@
               <div class="mc-stat-card">
                 <div class="mc-stat-label">可用點數</div>
                 <div id="cardPoints" class="mc-stat-value">100 點</div>
-                <div id="cardPointsNote" class="mc-stat-sub">目前沒有到期提醒</div>
+                <div id="cardPointsNote" class="mc-stat-sub">點我兌換禮金</div>
               </div>
 
               <div class="mc-stat-card">
@@ -1011,9 +1010,7 @@
         `${formatNumber(card.availablePoints || 0)} 點`;
 
       document.getElementById('cardPointsNote').textContent =
-        card.pointsExpireAt
-          ? `最晚失效日 ${card.pointsExpireAt}`
-          : '目前沒有到期提醒';
+        '點我兌換禮金';
 
       document.getElementById('cardCoupons').textContent =
         `${formatNumber(card.availableCoupons || 0)} 張`;
